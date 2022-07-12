@@ -1,0 +1,91 @@
+export type Quiz = {
+    id: string;
+    title: string;
+    url_id: string;
+    domain: string;
+    shuffle_questions: boolean;
+    status: 'on' | 'off' | 'deleted';
+    questions: Question[];
+    results: Result[];
+    forms: Form[];
+    connections: Connection[];
+    first_element_id: string;
+};
+
+export type Image = {
+    id?: string;
+    dataURL?: string;
+};
+
+export type Question = {
+    id: string;
+    quiz_id: string;
+    title: string;
+    order: number;
+    type: 'radiobutton' | 'checkbox' | 'textarea';
+    status: 'on' | 'off' | 'deleted';
+    answerOptions?: AnswerOption[];
+    images?: Image[];
+    subtitle: string;
+    description: string;
+    video_url: string;
+    correct_answer_points: number;
+};
+
+export type Connection = {
+    id: string;
+    quiz_id: string;
+    source_obj_id: string;
+    target_obj_id: string;
+    connectionConditions?: ConnectionCondition[];
+};
+
+export type Result = {
+    id: string;
+    quiz_id: string;
+    title: string;
+    status: 'on' | 'off' | 'deleted';
+    type: 'redirect' | 'image_description';
+    subtitle: string;
+    description: string;
+    redirect_url: string;
+    images?: Image[];
+};
+
+export type Form = {
+    id: string;
+    quiz_id: string;
+    title: string;
+    description: string;
+    images?: Image[];
+};
+
+export type ConnectionCondition = {
+    id: string;
+    connection_id: string;
+    answer_option_id: string | null;
+    question_id: string;
+    type: 'points' | 'answer_option';
+    sign: '=' | '>' | '<';
+    value: number;
+};
+
+export type AnswerOption = {
+    id: string;
+    question_id: string;
+    title: string;
+    order: number;
+    points: number;
+    status: 'on' | 'off' | 'deleted';
+    is_right: boolean;
+};
+
+export type apiValidationError<T> = {
+    field: keyof T;
+    message: string;
+};
+
+export type apiValidationErrorResponse<T> = {
+    data: apiValidationError<T>[];
+    status: number;
+};
