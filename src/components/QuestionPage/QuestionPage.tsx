@@ -1,18 +1,14 @@
 import React from 'react';
-import {Question, Quiz} from '../../redux/types';
+import {Answer, Question, Quiz} from '../../redux/types';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
-import {Answer, saveQuestionData} from '../../redux/slices/passingSlice';
+import {saveQuestionData} from '../../redux/slices/sessionSlice';
 import Radiobutton from './AnswerBlocks/Radiobutton';
 import Checkbox from './AnswerBlocks/Checkbox';
 
 type Props = {
     quiz: Quiz;
     questionObj?: Question;
-};
-
-type Inputs = {
-    // answer;
 };
 
 const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {

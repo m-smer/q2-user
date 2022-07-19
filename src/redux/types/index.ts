@@ -12,6 +12,56 @@ export type Quiz = {
     first_element_id: string;
 };
 
+export type SessionState = {
+    id: string;
+    setUtms: boolean;
+    passingData?: PassingData;
+    actualPage?: PageData;
+};
+
+export type PassingDataToSend = {
+    id: string;
+    quiz_id: string;
+    passingData?: PassingData;
+};
+
+export type PageData = {
+    obj: Form | Question | Result;
+    type: 'question' | 'form' | 'result';
+};
+
+export type FormData = {
+    formId: string;
+    phone: string;
+    page_opened_at: string;
+    received_at: string;
+};
+
+export type PassingMetaData = {
+    utm_source?: string | null;
+    utm_campaign?: string | null;
+    utm_term?: string | null;
+    utm_content?: string | null;
+    utm_medium?: string | null;
+    opened_at: string;
+    last_action_at: string;
+    points?: number;
+};
+
+export type PassingData = {
+    forms: {[key: string]: FormData};
+    answers: {[key: string]: Answer};
+    meta?: PassingMetaData;
+};
+
+export type Answer = {
+    answerOptionsIds: string[];
+    answerText?: string;
+    points: number;
+    page_opened_at: string;
+    received_at: string;
+};
+
 export type Image = {
     id?: string;
     dataURL?: string;

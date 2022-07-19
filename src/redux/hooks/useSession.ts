@@ -1,10 +1,10 @@
 import {useSelector} from 'react-redux';
-import {selectPassings} from '../slices/passingSlice';
+import {selectSessions} from '../slices/sessionSlice';
 import {useParams} from 'react-router-dom';
 
-export const usePassing = () => {
+export const useSession = () => {
     const {quizUrlId} = useParams<{quizUrlId: string}>();
-    const passings = useSelector(selectPassings);
+    const sessions = useSelector(selectSessions);
     if (quizUrlId === undefined) return undefined;
-    return passings[quizUrlId];
+    return sessions[quizUrlId];
 };

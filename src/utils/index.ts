@@ -1,5 +1,10 @@
-import {Connection, Quiz} from '../redux/types';
-import {PageData, PassingState, UserData} from '../redux/slices/passingSlice';
+import {
+    Connection,
+    PageData,
+    PassingData,
+    Quiz,
+    SessionState,
+} from '../redux/types';
 
 export const pageDataById = (
     quiz: Quiz,
@@ -19,9 +24,9 @@ export const pageDataById = (
 
 export const getNextPageData = (
     quiz: Quiz,
-    passing: PassingState,
+    session: SessionState,
 ): PageData | undefined => {
-    const currentPageId = passing.actualPage?.obj.id;
+    const currentPageId = session.actualPage?.obj.id;
     const connections = quiz.connections.filter(
         c => c.source_obj_id === currentPageId,
     );
@@ -33,7 +38,7 @@ export const getNextPageData = (
             Number(a.connectionConditions?.length),
     );
 
-    const fits = findBestConnection(connections, passing.userData);
+    const fits = findBestConnection(connections, session.passingData);
     if (fits) {
         return pageDataById(quiz, fits.target_obj_id);
     } else return undefined;
@@ -41,14 +46,14 @@ export const getNextPageData = (
 
 export const findBestConnection = (
     connections: Connection[],
-    passingData?: UserData,
+    passingData?: PassingData,
 ) => {
     return connections.find(con => isConditionsMet(con, passingData));
 };
 
 export const isConditionsMet = (
     connection: Connection,
-    passingData?: UserData,
+    passingData?: PassingData,
 ) => {
     if (connection.connectionConditions?.length === 0) return true;
     if (!passingData) return false;
@@ -56,7 +61,7 @@ export const isConditionsMet = (
 
     connection.connectionConditions?.map(cond => {
         if (!met) return false;
-        const answer = passingData.questions?.[cond.question_id as any];
+        const answer = passingData.answers?.[cond.question_id as any];
 
         // если ответа на вопрос еще не было, то условие сразу не соблюдено
         if (answer === undefined) {

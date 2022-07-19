@@ -1,8 +1,8 @@
 import React from 'react';
-import {AnswerOption, Question, Quiz} from '../../../redux/types';
+import {Answer, AnswerOption, Question, Quiz} from '../../../redux/types';
 import {useForm} from 'react-hook-form';
-import {Answer} from '../../../redux/slices/passingSlice';
 import {Simulate} from 'react-dom/test-utils';
+import moment from 'moment';
 
 type Props = {
     questionObj: Question;
@@ -14,6 +14,7 @@ type Inputs = {
 };
 
 const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
+    const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
     const {register, handleSubmit} = useForm<Inputs>({
         shouldUseNativeValidation: true,
     });
@@ -22,6 +23,8 @@ const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
         return setAnswer({
             answerOptionsIds: data.answerOptionIds,
             points: calcPoints(data.answerOptionIds),
+            page_opened_at: page_opened_at,
+            received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
         });
     };
 

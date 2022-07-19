@@ -2,7 +2,9 @@ import React from 'react';
 import {Form, Quiz} from '../../redux/types';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
-import {saveFormData} from '../../redux/slices/passingSlice';
+import {saveFormData} from '../../redux/slices/sessionSlice';
+import QuizPage from '../QuizPage';
+import moment from 'moment';
 
 type Props = {
     quiz: Quiz;
@@ -14,15 +16,25 @@ type Inputs = {
 };
 
 const FormPage: React.FC<Props> = ({quiz, formObj}) => {
+    const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
     const {register, handleSubmit} = useForm<Inputs>({
         shouldUseNativeValidation: true,
     });
     const dispatch = useAppDispatch();
 
+    console.log('Рендер объекта формы');
     if (!formObj) return null;
     const onSubmit = async (data: Inputs) => {
         dispatch(
-            saveFormData({quiz: quiz, formData: {...data, formId: formObj.id}}),
+            saveFormData({
+                quiz: quiz,
+                formData: {
+                    ...data,
+                    formId: formObj.id,
+                    page_opened_at: page_opened_at,
+                    received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                },
+            }),
         );
     };
     return (
@@ -43,4 +55,5 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
     );
 };
 
+FormPage.whyDidYouRender = true;
 export default FormPage;

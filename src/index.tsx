@@ -1,3 +1,4 @@
+import './wdyr';
 import React from 'react';
 import App from './components/App';
 import {createRoot} from 'react-dom/client';
@@ -12,6 +13,8 @@ let persistor = persistStore(store);
 
 const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+App.whyDidYouRender = true;
+
 root.render(
     <BrowserRouter>
         <Provider store={store}>

@@ -11,18 +11,20 @@ import {
     REGISTER,
     REHYDRATE,
 } from 'redux-persist';
-import {passingsReducer} from '../slices/passingSlice';
+import {sessionReducer} from '../slices/sessionSlice';
+import {passingDataApi} from '../services/passingDataApi';
 
 const reducers = combineReducers({
     [quizApi.reducerPath]: quizApi.reducer,
-    passings: passingsReducer,
+    [passingDataApi.reducerPath]: passingDataApi.reducer,
+    session: sessionReducer,
 });
 
 const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    blacklist: ['quizApi', 'passings'],
+    blacklist: ['quizApi', 'session', 'passingDataApi'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -42,7 +44,9 @@ export const store = configureStore({
                     REGISTER,
                 ],
             },
-        }).concat(quizApi.middleware),
+        })
+            .concat(quizApi.middleware)
+            .concat(passingDataApi.middleware),
 });
 
 setupListeners(store.dispatch);
