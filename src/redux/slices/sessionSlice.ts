@@ -10,7 +10,6 @@ import {
 } from '../types';
 import {getNextPageData, pageDataById} from '../../utils';
 import moment from 'moment';
-const merge = require('deepmerge');
 
 type SessionsState = {
     [key: string]: SessionState;

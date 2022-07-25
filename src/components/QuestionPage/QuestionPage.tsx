@@ -5,6 +5,7 @@ import {useAppDispatch} from '../../redux/hooks';
 import {saveQuestionData} from '../../redux/slices/sessionSlice';
 import Radiobutton from './AnswerBlocks/Radiobutton';
 import Checkbox from './AnswerBlocks/Checkbox';
+import Textarea from './AnswerBlocks/Textarea';
 
 type Props = {
     quiz: Quiz;
@@ -38,6 +39,10 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
 
             {questionObj.type === 'checkbox' && questionObj.answerOptions && (
                 <Checkbox setAnswer={setAnswer} questionObj={questionObj} />
+            )}
+
+            {questionObj.type === 'textarea' && (
+                <Textarea setAnswer={setAnswer} questionObj={questionObj} />
             )}
         </div>
     );

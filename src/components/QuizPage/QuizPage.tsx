@@ -22,6 +22,7 @@ const QuizPage: React.FC = () => {
         isFetching,
         isLoading,
     } = useGetQuizQuery(quizUrlId ?? '');
+    const [sendPassing, result] = useSendPassingMutation();
     const [searchParams, setSearchParams] = useSearchParams();
     const sessions = useSelector(selectSessions);
     const session = quizUrlId ? sessions[quizUrlId] : undefined;
@@ -44,7 +45,7 @@ const QuizPage: React.FC = () => {
 
     useEffect(() => {
         if (quiz && session) {
-            console.log('setUTMs');
+            console.log('setUTMs ' + utmValues);
             dispatch(
                 setUTMs({
                     quiz: quiz,
@@ -61,8 +62,6 @@ const QuizPage: React.FC = () => {
             console.log('Инициализирую сессию');
         }
     }, [session?.id, quiz?.id]);
-
-    const [sendPassing, result] = useSendPassingMutation();
 
     const sendPassingToBackend = async () => {
         return (

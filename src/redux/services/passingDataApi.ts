@@ -4,7 +4,7 @@ import {PassingDataToSend} from '../types';
 export const passingDataApi = createApi({
     reducerPath: 'passingData',
     baseQuery: fetchBaseQuery({
-        baseUrl: '/v1/',
+        baseUrl: process.env.REACT_APP_API_URL_PREFIX + '/v1/',
     }),
     endpoints: builder => ({
         sendPassing: builder.mutation<

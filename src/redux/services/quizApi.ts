@@ -6,7 +6,7 @@ import {store} from '../store';
 export const quizApi = createApi({
     reducerPath: 'quizApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: '/v1/',
+        baseUrl: process.env.REACT_APP_API_URL_PREFIX + '/v1/',
     }),
     endpoints: builder => ({
         getQuiz: builder.query<Quiz, string>({
