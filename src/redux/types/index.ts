@@ -14,7 +14,6 @@ export type Quiz = {
 
 export type SessionState = {
     id: string;
-    setUtms: boolean;
     passingData?: PassingData;
     actualPage?: PageData;
 };
@@ -46,6 +45,7 @@ export type PassingMetaData = {
     opened_at: string;
     last_action_at: string;
     points: number;
+    result_id?: string | null;
 };
 
 export type PassingData = {

@@ -34,7 +34,7 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
         return null;
     };
 
-    console.log(session.passingData);
+    // console.log(session.passingData);
     return (
         <div className="flex h-screen">
             <div className="m-auto">
@@ -45,4 +45,4 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
 };
 
 QuizBlock.whyDidYouRender = true;
-export default QuizBlock;
+export default React.memo(QuizBlock);

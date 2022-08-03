@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import {sessionReducer} from '../slices/sessionSlice';
 import {passingDataApi} from '../services/passingDataApi';
+import passingListener from '../middlewares/passingListener';
 
 const reducers = combineReducers({
     [quizApi.reducerPath]: quizApi.reducer,
@@ -45,6 +46,7 @@ export const store = configureStore({
                 ],
             },
         })
+            .prepend(passingListener.middleware)
             .concat(quizApi.middleware)
             .concat(passingDataApi.middleware),
 });

@@ -4,14 +4,15 @@ import {PassingDataToSend} from '../types';
 export const passingDataApi = createApi({
     reducerPath: 'passingData',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_API_URL_PREFIX + '/v1/',
+        baseUrl: process.env.REACT_APP_API_URL_PREFIX,
     }),
     endpoints: builder => ({
-        sendPassing: builder.mutation<
+        sendPassingToBackend: builder.mutation<
             PassingDataToSend,
             Partial<PassingDataToSend>
         >({
             query(body) {
+                console.log('Отправляю дату на сервер');
                 return {
                     url: `session/add?debug=1`,
                     method: 'POST',
@@ -22,4 +23,4 @@ export const passingDataApi = createApi({
     }),
 });
 
-export const {useSendPassingMutation} = passingDataApi;
+export const {useSendPassingToBackendMutation} = passingDataApi;

@@ -56,4 +56,4 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
 };
 
 FormPage.whyDidYouRender = true;
-export default FormPage;
+export default React.memo(FormPage);

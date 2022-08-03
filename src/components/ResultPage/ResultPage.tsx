@@ -7,6 +7,10 @@ type Props = {
 
 const ResultPage: React.FC<Props> = ({resultObj}) => {
     if (!resultObj) return null;
+    if (resultObj.type === 'redirect') {
+        window.location.href = resultObj.redirect_url;
+        return null;
+    }
     return <div>Результат: {resultObj.title}</div>;
 };
 
