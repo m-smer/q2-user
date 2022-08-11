@@ -14,6 +14,10 @@ const QuizPage: React.FC = () => {
     const {utms, areUtmsEmpty} = useUtms();
 
     useEffect(() => {
+        quiz && (document.title = quiz.title);
+    });
+
+    useEffect(() => {
         if (quiz && session === undefined) {
             console.log('Инициализирую сессию');
             dispatch(initSession({quiz, utms}));

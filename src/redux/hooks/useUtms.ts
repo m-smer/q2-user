@@ -1,13 +1,7 @@
-import {useParams, useSearchParams} from 'react-router-dom';
-import {useAppDispatch} from './index';
-import {useQuiz} from './useQuiz';
-import {useSession} from './useSession';
+import {useSearchParams} from 'react-router-dom';
 
 export const useUtms = () => {
-    const dispatch = useAppDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
-    const {data: quiz} = useQuiz();
-    const session = useSession();
 
     const utms = {
         utm_source: searchParams.get('utm_source'),

@@ -37,9 +37,7 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
     // console.log(session.passingData);
     return (
         <div className="flex h-screen">
-            <div className="m-auto">
-                {quizObj.title} - {session?.id} {showAction()}
-            </div>
+            <div className="m-auto">{showAction()}</div>
         </div>
     );
 };

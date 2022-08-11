@@ -108,6 +108,10 @@ export type Form = {
     title: string;
     description: string;
     images?: Image[];
+    show_name_field?: boolean;
+    show_surname_field?: boolean;
+    show_phone_field?: boolean;
+    show_email_field?: boolean;
 };
 
 export type ConnectionCondition = {
