@@ -10,6 +10,8 @@ export type Quiz = {
     forms: Form[];
     connections: Connection[];
     first_element_id: string;
+    prohibited_phones: string;
+    allowed_emails: string;
 };
 
 export type SessionState = {
