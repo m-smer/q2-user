@@ -2,7 +2,15 @@ import React from 'react';
 import FormPage from '../../FormPage';
 import QuestionPage from '../../QuestionPage';
 import ResultPage from '../../ResultPage';
-import {Form, Question, Quiz, Result, SessionState} from '../../../redux/types';
+import {
+    Form,
+    Page,
+    Question,
+    Quiz,
+    Result,
+    SessionState,
+} from '../../../redux/types';
+import PagePage from '../../PagePage';
 
 type Props = {
     quizObj: Quiz;
@@ -24,6 +32,13 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
                     <FormPage
                         quiz={quizObj}
                         formObj={session.actualPage?.obj as Form}
+                    />
+                );
+            case 'page':
+                return (
+                    <PagePage
+                        quiz={quizObj}
+                        pageObj={session.actualPage?.obj as Page}
                     />
                 );
             case 'result':

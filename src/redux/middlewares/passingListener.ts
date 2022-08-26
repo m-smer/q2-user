@@ -2,6 +2,7 @@ import {createListenerMiddleware, isAnyOf} from '@reduxjs/toolkit';
 import {
     initSession,
     saveFormData,
+    savePageData,
     saveQuestionData,
 } from '../slices/sessionSlice';
 import {passingDataApi} from '../services/passingDataApi';
@@ -11,7 +12,7 @@ import {RootState} from '../store';
 const passingListener = createListenerMiddleware();
 
 passingListener.startListening({
-    matcher: isAnyOf(initSession, saveFormData, saveQuestionData),
+    matcher: isAnyOf(initSession, saveFormData, saveQuestionData, savePageData),
     effect: async (action, listenerApi) => {
         const quiz = action.payload.quiz;
         const state = listenerApi.getState() as RootState;

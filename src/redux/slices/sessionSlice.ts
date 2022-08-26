@@ -1,17 +1,15 @@
 import {createSlice, nanoid, PayloadAction} from '@reduxjs/toolkit';
 import {RootState, store} from '../store';
 import {
-    AnswerOption,
     FormData,
     Question,
     Quiz,
     Answer,
     SessionState,
-    Result,
+    PageData,
 } from '../types';
-import {getNextPageData, pageDataById} from '../../utils';
+import {getNextPageInfo, pageDataById} from '../../utils';
 import moment from 'moment';
-import {passingDataApi} from '../services/passingDataApi';
 
 type SessionsState = {
     [key: string]: SessionState;
@@ -38,6 +36,7 @@ const slice = createSlice({
                 actualPage: pageDataById(quiz, quiz.first_element_id),
                 passingData: {
                     forms: {},
+                    pages: {},
                     answers: {},
                     meta: {
                         opened_at: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -61,7 +60,30 @@ const slice = createSlice({
             state[quiz.url_id].passingData.meta.last_action_at =
                 moment().format('YYYY-MM-DD HH:mm:ss');
 
-            const nextPage = getNextPageData(quiz, state[quiz.url_id]);
+            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
+            if (nextPage) {
+                state[quiz.url_id].actualPage = nextPage;
+                if (nextPage.type === 'result') {
+                    // @ts-ignore
+                    state[quiz.url_id].passingData.meta.result_id =
+                        nextPage.obj.id;
+                }
+            }
+        },
+        savePageData: (
+            state,
+            {
+                payload: {quiz, pageData},
+            }: PayloadAction<{quiz: Quiz; pageData: PageData}>,
+        ) => {
+            console.log(pageData);
+            // @ts-ignore
+            state[quiz.url_id].passingData.pages[pageData.page_id] = pageData;
+            // @ts-ignore
+            state[quiz.url_id].passingData.meta.last_action_at =
+                moment().format('YYYY-MM-DD HH:mm:ss');
+
+            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
             if (nextPage) {
                 state[quiz.url_id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
@@ -85,7 +107,7 @@ const slice = createSlice({
             // @ts-ignore
             state[quiz.url_id].passingData.meta.points += answer.points;
 
-            const nextPage = getNextPageData(quiz, state[quiz.url_id]);
+            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
             if (nextPage) {
                 state[quiz.url_id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
@@ -98,7 +120,8 @@ const slice = createSlice({
     },
 });
 
-export const {initSession, saveFormData, saveQuestionData} = slice.actions;
+export const {initSession, saveFormData, savePageData, saveQuestionData} =
+    slice.actions;
 
 export const sessionReducer = slice.reducer;
 

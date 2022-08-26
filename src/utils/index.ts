@@ -1,6 +1,6 @@
 import {
     Connection,
-    PageData,
+    PageInfo,
     PassingData,
     Quiz,
     SessionState,
@@ -9,12 +9,15 @@ import {
 export const pageDataById = (
     quiz: Quiz,
     pageId: string,
-): PageData | undefined => {
+): PageInfo | undefined => {
     const form = quiz.forms.find(e => e.id === pageId);
     if (form) return {type: 'form', obj: form};
 
     const question = quiz.questions.find(e => e.id === pageId);
     if (question) return {type: 'question', obj: question};
+
+    const page = quiz.pages.find(e => e.id === pageId);
+    if (page) return {type: 'page', obj: page};
 
     const result = quiz.results.find(e => e.id === pageId);
     if (result) return {type: 'result', obj: result};
@@ -22,10 +25,10 @@ export const pageDataById = (
     return undefined;
 };
 
-export const getNextPageData = (
+export const getNextPageInfo = (
     quiz: Quiz,
     session: SessionState,
-): PageData | undefined => {
+): PageInfo | undefined => {
     const currentPageId = session.actualPage?.obj.id;
     const connections = quiz.connections.filter(
         c => c.source_obj_id === currentPageId,

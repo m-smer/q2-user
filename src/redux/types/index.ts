@@ -8,6 +8,7 @@ export type Quiz = {
     questions: Question[];
     results: Result[];
     forms: Form[];
+    pages: Page[];
     connections: Connection[];
     first_element_id: string;
     prohibited_phones: string;
@@ -17,7 +18,7 @@ export type Quiz = {
 export type SessionState = {
     id: string;
     passingData?: PassingData;
-    actualPage?: PageData;
+    actualPage?: PageInfo;
 };
 
 export type PassingDataToSend = {
@@ -26,14 +27,20 @@ export type PassingDataToSend = {
     passingData?: PassingData;
 };
 
-export type PageData = {
+export type PageInfo = {
     obj: Form | Question | Result;
-    type: 'question' | 'form' | 'result';
+    type: 'question' | 'form' | 'result' | 'page';
 };
 
 export type FormData = {
     formId: string;
     phone: string;
+    page_opened_at: string;
+    received_at: string;
+};
+
+export type PageData = {
+    page_id: string;
     page_opened_at: string;
     received_at: string;
 };
@@ -52,6 +59,7 @@ export type PassingMetaData = {
 
 export type PassingData = {
     forms: {[key: string]: FormData};
+    pages: {[key: string]: PageData};
     answers: {[key: string]: Answer};
     meta?: PassingMetaData;
 };
@@ -114,6 +122,16 @@ export type Form = {
     show_surname_field?: boolean;
     show_phone_field?: boolean;
     show_email_field?: boolean;
+};
+
+export type Page = {
+    id: string;
+    status: 'on' | 'off' | 'deleted';
+    quiz_id: string;
+    title: string;
+    description: string;
+    button_text: string;
+    is_modal: boolean;
 };
 
 export type ConnectionCondition = {
