@@ -13,6 +13,12 @@ export type Quiz = {
     first_element_id: string;
     prohibited_phones: string;
     allowed_emails: string;
+    quiz_time_limit: string;
+    question_time_limit: string;
+    cover_title: string | null;
+    cover_subtitle: string | null;
+    cover_text: string | null;
+    notice_emails: string;
 };
 
 export type SessionState = {
@@ -90,6 +96,7 @@ export type Question = {
     description: string;
     video_url: string;
     correct_answer_points: number;
+    time_limit: string;
 };
 
 export type Connection = {

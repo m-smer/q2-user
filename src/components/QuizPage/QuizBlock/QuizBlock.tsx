@@ -11,6 +11,7 @@ import {
     SessionState,
 } from '../../../redux/types';
 import PagePage from '../../PagePage';
+import CoverPage from '../../CoverPage';
 
 type Props = {
     quizObj: Quiz;
@@ -19,6 +20,8 @@ type Props = {
 
 const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
     const showAction = () => {
+        if (quizObj.status !== 'on') return <CoverPage quiz={quizObj} />;
+
         switch (session.actualPage?.type) {
             case 'question':
                 return (
