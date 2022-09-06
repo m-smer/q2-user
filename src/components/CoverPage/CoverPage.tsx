@@ -8,6 +8,11 @@ type Props = {
 const CoverPage: React.FC<Props> = ({quiz}) => {
     return (
         <div>
+            {quiz.cover_images?.length > 0 && (
+                <div className="max-w-sm">
+                    <img src={quiz.cover_images[0].dataURL} />
+                </div>
+            )}
             <h1 className="h1">{quiz.cover_title}</h1>
             <h4 className="h4">{quiz.cover_subtitle}</h4>
             <div>

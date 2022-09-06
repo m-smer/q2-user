@@ -10,6 +10,8 @@ export type Quiz = {
     forms: Form[];
     pages: Page[];
     connections: Connection[];
+    logotypes: Image[];
+    cover_images: Image[];
     first_element_id: string;
     prohibited_phones: string;
     allowed_emails: string;
@@ -81,6 +83,7 @@ export type Answer = {
 export type Image = {
     id?: string;
     dataURL?: string;
+    type?: string | null;
 };
 
 export type Question = {
