@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<div>Квиз не выбран.</div>} />
+                <Route path="/" element={<QuizPage />} />
                 <Route path="/:quizUrlId" element={<QuizPage />} />
             </Routes>
         </div>

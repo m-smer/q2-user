@@ -18,7 +18,7 @@ passingListener.startListening({
         const state = listenerApi.getState() as RootState;
 
         const session = state.session[
-            action.payload.quiz.url_id
+            action.payload.quiz.id
         ] as SessionState;
 
         listenerApi.dispatch(

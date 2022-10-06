@@ -31,7 +31,7 @@ const slice = createSlice({
             state,
             {payload: {quiz, utms}}: PayloadAction<{quiz: Quiz; utms: UTMs}>,
         ) => {
-            state[quiz.url_id] = {
+            state[quiz.id] = {
                 id: nanoid(20),
                 actualPage: pageDataById(quiz, quiz.first_element_id),
                 passingData: {
@@ -55,17 +55,17 @@ const slice = createSlice({
             }: PayloadAction<{quiz: Quiz; formData: FormData}>,
         ) => {
             // @ts-ignore
-            state[quiz.url_id].passingData.forms[formData.formId] = formData;
+            state[quiz.id].passingData.forms[formData.formId] = formData;
             // @ts-ignore
-            state[quiz.url_id].passingData.meta.last_action_at =
+            state[quiz.id].passingData.meta.last_action_at =
                 moment().format('YYYY-MM-DD HH:mm:ss');
 
-            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
+            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
-                state[quiz.url_id].actualPage = nextPage;
+                state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.url_id].passingData.meta.result_id =
+                    state[quiz.id].passingData.meta.result_id =
                         nextPage.obj.id;
                 }
             }
@@ -78,17 +78,17 @@ const slice = createSlice({
         ) => {
             console.log(pageData);
             // @ts-ignore
-            state[quiz.url_id].passingData.pages[pageData.page_id] = pageData;
+            state[quiz.id].passingData.pages[pageData.page_id] = pageData;
             // @ts-ignore
-            state[quiz.url_id].passingData.meta.last_action_at =
+            state[quiz.id].passingData.meta.last_action_at =
                 moment().format('YYYY-MM-DD HH:mm:ss');
 
-            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
+            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
-                state[quiz.url_id].actualPage = nextPage;
+                state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.url_id].passingData.meta.result_id =
+                    state[quiz.id].passingData.meta.result_id =
                         nextPage.obj.id;
                 }
             }
@@ -100,19 +100,19 @@ const slice = createSlice({
             }: PayloadAction<{quiz: Quiz; question: Question; answer: Answer}>,
         ) => {
             //@ts-ignore
-            state[quiz.url_id].passingData.answers[question.id] = answer;
+            state[quiz.id].passingData.answers[question.id] = answer;
             // @ts-ignore
-            state[quiz.url_id].passingData.meta.last_action_at =
+            state[quiz.id].passingData.meta.last_action_at =
                 moment().format('YYYY-MM-DD HH:mm:ss');
             // @ts-ignore
-            state[quiz.url_id].passingData.meta.points += answer.points;
+            state[quiz.id].passingData.meta.points += answer.points;
 
-            const nextPage = getNextPageInfo(quiz, state[quiz.url_id]);
+            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
-                state[quiz.url_id].actualPage = nextPage;
+                state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.url_id].passingData.meta.result_id =
+                    state[quiz.id].passingData.meta.result_id =
                         nextPage.obj.id;
                 }
             }

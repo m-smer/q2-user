@@ -1,10 +1,11 @@
 import {useSelector} from 'react-redux';
 import {selectSessions} from '../slices/sessionSlice';
 import {useParams} from 'react-router-dom';
+import {useQuiz} from './useQuiz';
 
 export const useSession = () => {
-    const {quizUrlId} = useParams<{quizUrlId: string}>();
+    const {data: quiz} = useQuiz();
     const sessions = useSelector(selectSessions);
-    if (quizUrlId === undefined) return undefined;
-    return sessions[quizUrlId];
+    if (quiz === undefined) return undefined;
+    return sessions[quiz.id];
 };
