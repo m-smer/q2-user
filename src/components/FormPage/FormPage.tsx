@@ -8,6 +8,7 @@ import InputMask from 'react-input-mask';
 import ErrorBlock from './ErrorBlock';
 import {saveFormData} from '../../redux/slices/sessionSlice';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
+import SingleImage from '../Blocks/SingleImage';
 
 type Props = {
     quiz: Quiz;
@@ -54,10 +55,11 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                 <ProgressBar quiz={quiz} />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
-                <div className="lg:mb-[20px] lg:mr-[30px]">
+                <div className="lg:mb-[20px] lg:mr-[30%]">
                     <h3 className="text-[34px] text-[#19191A] font-bold">
                         {formObj.title}
                     </h3>
+                    <SingleImage images={formObj.images} />
                     <p className="text-[22px] text-[#19191A] font-normal">
                         {formObj.description}
                     </p>
