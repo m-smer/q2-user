@@ -7,6 +7,7 @@ import Logotype from '../Blocks/Logotype';
 import InputMask from 'react-input-mask';
 import ErrorBlock from './ErrorBlock';
 import {saveFormData} from '../../redux/slices/sessionSlice';
+import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 
 type Props = {
     quiz: Quiz;
@@ -25,19 +26,14 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
     const {
         register,
         handleSubmit,
-        control,
-        setValue,
         formState: {errors},
     } = useForm<Inputs>({
         shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
 
-    console.log(errors);
     if (!formObj) return null;
     const onSubmit = async (data: Inputs) => {
-        console.log(data);
-        // return false;
         dispatch(
             saveFormData({
                 quiz: quiz,
@@ -55,13 +51,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
         <div className="m-auto px-[20px] section-6 pb-[30px]">
             <Logotype images={quiz.logotypes} />
             <div className="mb-8">
-                {/*<p className="text-[#1A3661] font-medium">№1</p>*/}
-                <div className="w-full h-[16px] bg-[#C7DDF1] mt-[3px] rounded-[3px] relative">
-                    <div
-                        className="absolute top-0 left-0 rounded-[3px] h-full bg-[#1A3661]"
-                        style={{width: '85.68%'}}
-                    />
-                </div>
+                <ProgressBar quiz={quiz} />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="lg:mb-[20px] lg:mr-[30px]">

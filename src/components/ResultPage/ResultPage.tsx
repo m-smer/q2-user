@@ -2,6 +2,8 @@ import React from 'react';
 import {Question, Quiz, Result} from '../../redux/types';
 import SingleImage from '../Blocks/SingleImage';
 import Logotype from '../Blocks/Logotype';
+import QuestionNumber from '../QuestionPage/QuestionNumber';
+import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 
 type Props = {
     quiz: Quiz;
@@ -17,7 +19,9 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
     return (
         <div className="m-auto px-[20px] section-7 pb-[30px]">
             <Logotype images={quiz.logotypes} />
-
+            <div className="mb-8">
+                <ProgressBar quiz={quiz} />
+            </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="mb-[20px] lg:mb-0 lg:border-r border-[#ccc]">
                     <h3 className="text-[28px] text-dark font-bold">

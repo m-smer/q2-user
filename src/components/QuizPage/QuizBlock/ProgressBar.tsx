@@ -9,7 +9,7 @@ type Props = {
 const ProgressBar: React.FC<Props> = ({quiz}) => {
     const session = useSession();
     const num = session?.passingData?.answers
-        ? Object.keys(session.passingData.answers).length + 1
+        ? Object.keys(session.passingData.answers).length
         : undefined;
     const percents = num ? (num / quiz.questions.length) * 100 : 0;
     return (

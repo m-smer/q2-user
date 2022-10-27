@@ -113,7 +113,7 @@
     display: none;
 }
 .iframe-video-content-modal {
-    display: none;
+    z-index: 1000;
 }
 .close-modal-btn {
     top: -38px;
