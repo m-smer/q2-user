@@ -7,6 +7,7 @@ import QuizPage from '../QuizPage';
 import moment from 'moment';
 import {data} from 'autoprefixer';
 import Logotype from '../Blocks/Logotype';
+import SingleImage from '../Blocks/SingleImage';
 
 type Props = {
     quiz: Quiz;
@@ -34,12 +35,8 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
     return (
         <div className="m-auto flex flex-col container px-[20px] items-center">
             <Logotype images={quiz.logotypes} />
-            <div className="mb-8 overflow-hidden">
-                {/*<img*/}
-                {/*    className="max-w-fit"*/}
-                {/*    src="./assets/images/Image.png"*/}
-                {/*    alt=""*/}
-                {/*/>*/}
+            <div className="mb-8 overflow-hidden max-w-[350px]">
+                <SingleImage images={pageObj.images} />
             </div>
             <div className="sm:text-5xl w-[240px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661]">
                 {pageObj.title}

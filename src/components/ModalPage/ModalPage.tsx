@@ -6,6 +6,7 @@ import {saveFormData, savePageData} from '../../redux/slices/sessionSlice';
 import QuizPage from '../QuizPage';
 import moment from 'moment';
 import {data} from 'autoprefixer';
+import SingleImage from '../Blocks/SingleImage';
 
 type Props = {
     quiz: Quiz;
@@ -36,6 +37,7 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
                     {pageObj.title}
                     <span className="js-text-content" />
                 </p>
+                <SingleImage images={pageObj.images} />
                 <button
                     onClick={onSubmit}
                     className="w-full flex items-center justify-center mt-8 py-[22px] bg-[#1A3661] uppercase text-white rounded-[5px] js-custom-btn-next-section-2">

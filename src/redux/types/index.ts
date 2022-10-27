@@ -139,6 +139,7 @@ export type Page = {
     status: 'on' | 'off' | 'deleted';
     quiz_id: string;
     title: string;
+    images?: Image[];
     description: string;
     button_text: string;
     is_modal: boolean;
