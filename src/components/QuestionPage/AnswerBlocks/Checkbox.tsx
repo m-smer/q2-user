@@ -15,9 +15,10 @@ type Inputs = {
 
 const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
     const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
-    const {register, handleSubmit} = useForm<Inputs>({
+    const {register, handleSubmit, watch} = useForm<Inputs>({
         shouldUseNativeValidation: true,
     });
+    const checkedOptions = watch('answerOptionIds', []);
 
     const onSubmit = (data: Inputs) => {
         return setAnswer({
@@ -52,16 +53,26 @@ const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {questionObj.answerOptions?.map(ao => (
-                    <p key={ao.id}>
+                    <label
+                        key={ao.id}
+                        htmlFor={'i' + ao.id}
+                        className="px-[13px] py-[35px] flex text-base group w-full bg-white hover:bg-[#C7DDF1] custom-btn-select-js-section-2 cursor-pointer">
+                        <span className="mr-[20px] w-[22px] h-[22px] bg-white border-[3px] border-[#1A3661] group-hover:bg-[#1A3661] group-hover:border-white ease-out duration-300 transition custom-btn-select-active-section-2" />
                         <input
-                            type={'checkbox'}
+                            type="checkbox"
                             value={ao.id}
+                            id={'i' + ao.id}
+                            className="w-0 h-0 custom-checkbox-select-js-section-2"
                             {...register('answerOptionIds')}
                         />
-                        {ao.title}
-                    </p>
+                        <span className="labelText">{ao.title}</span>
+                    </label>
                 ))}
-                <input type="submit" />
+                <input
+                    disabled={checkedOptions.length === 0}
+                    type="submit"
+                    className="w-full flex items-center justify-center mt-8 py-[22px] bg-[#1A3661] uppercase text-white rounded-[5px] custom-btn-next-section-3"
+                />
             </form>
         </div>
     );

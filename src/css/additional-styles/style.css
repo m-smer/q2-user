@@ -1,0 +1,135 @@
+/**{*/
+/*    font-family: "GolosTextWebRegular", "sans-serif";*/
+/*}*/
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 40px!important;
+}
+.swiper-button-prev:after {
+    margin-right: 3px;
+}
+.swiper-button-next:after {
+    margin-left: 3px;
+}
+.swiper-button-next,
+.swiper-button-prev {
+    width: 30px !important;
+    height: 30px !important;
+    background: #ffffff70 !important;
+    opacity: 1 !important;
+    border-radius: 50%;
+    color: #ffffff !important;
+    top: calc(50% - 15px) !important;
+}
+.swiper-button-disabled {
+    background: #ffffff25 !important;
+    color: #ffffff50 !important;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-weight: bold;
+    font-size: 22px !important;
+}
+.swiper-pagination-bullet-active {
+    background: #1a3661 !important;
+}
+.my-checkbox input:checked ~ .checkmark {
+    background-color: #fff;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.my-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.section-1,
+.section-2,
+.section-3,
+.section-4,
+.section-5,
+.section-6,
+.section-7,
+.section-8 {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    width: 1140px;
+}
+@media (max-width: 1140px) {
+    .section-1,
+    .section-2,
+    .section-3,
+    .section-4,
+    .section-5,
+    .section-6,
+    .section-7,
+    .section-8 {
+        width: 100%;
+    }
+}
+.section-1::-webkit-scrollbar,
+.section-2::-webkit-scrollbar,
+.section-3::-webkit-scrollbar,
+.section-4::-webkit-scrollbar,
+.section-5::-webkit-scrollbar,
+.section-6::-webkit-scrollbar,
+.section-7::-webkit-scrollbar,
+.section-8::-webkit-scrollbar {
+    width: 0;
+    padding: 0;
+}
+
+.custom-modal-window {
+    display: none;
+}
+.iframe-video-content-modal {
+    display: none;
+}
+.close-modal-btn {
+    top: -38px;
+    right: -38px;
+}
+.close-modal-btn::after,
+.close-modal-btn::before {
+    content: "";
+    position: absolute;
+    width: 31px;
+    height: 2px;
+    background: #fff;
+}
+.close-modal-btn::after {
+    transform: rotate(45deg);
+}
+.close-modal-btn::before {
+    transform: rotate(-45deg);
+}

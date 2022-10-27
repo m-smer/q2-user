@@ -15,9 +15,10 @@ type Inputs = {
 
 const Textarea: React.FC<Props> = ({setAnswer, questionObj}) => {
     const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
-    const {register, handleSubmit} = useForm<Inputs>({
+    const {register, handleSubmit, watch} = useForm<Inputs>({
         shouldUseNativeValidation: true,
     });
+    const answerText = watch('answerText', '');
 
     const onSubmit = (data: Inputs) => {
         return setAnswer({
@@ -32,14 +33,20 @@ const Textarea: React.FC<Props> = ({setAnswer, questionObj}) => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="py-[15px] px-[20px] w-full h-[190px] border border-[#C7DDF1] rounded-[5px] text-base">
+                    <textarea
+                        {...register('answerText', {
+                            required: 'Пожалуйста, введите ответ',
+                        })}
+                        className="outline-0 resize-none w-full h-full"
+                    />
+                </div>
+
                 <input
-                    className="border"
-                    type={'text'}
-                    {...register('answerText', {
-                        required: 'Пожалуйста, введите ответ',
-                    })}
+                    disabled={answerText.length === 0}
+                    type="submit"
+                    className="w-full flex items-center justify-center mt-8 py-[22px] bg-[#1A3661] uppercase text-white rounded-[5px] custom-btn-next-section-3"
                 />
-                <input type="submit" />
             </form>
         </div>
     );

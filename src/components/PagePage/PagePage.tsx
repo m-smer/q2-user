@@ -6,6 +6,7 @@ import {saveFormData, savePageData} from '../../redux/slices/sessionSlice';
 import QuizPage from '../QuizPage';
 import moment from 'moment';
 import {data} from 'autoprefixer';
+import Logotype from '../Blocks/Logotype';
 
 type Props = {
     quiz: Quiz;
@@ -31,12 +32,22 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
         console.log(123);
     };
     return (
-        <div>
-            <div>Страница: {pageObj.title}</div>
-            <div>{pageObj.description}</div>
-
-            <button className="border" onClick={onSubmit}>
-                Далее
+        <div className="m-auto flex flex-col container px-[20px] items-center">
+            <Logotype images={quiz.logotypes} />
+            <div className="mb-8 overflow-hidden">
+                {/*<img*/}
+                {/*    className="max-w-fit"*/}
+                {/*    src="./assets/images/Image.png"*/}
+                {/*    alt=""*/}
+                {/*/>*/}
+            </div>
+            <div className="sm:text-5xl w-[240px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661]">
+                {pageObj.title}
+            </div>
+            <button
+                onClick={onSubmit}
+                className="bg-[#1A3661] text-white sm:px-36 py-5 w-full sm:w-auto text-sm rounded-md custom-btn-1">
+                {pageObj.button_text ?? 'Далее'}
             </button>
         </div>
     );

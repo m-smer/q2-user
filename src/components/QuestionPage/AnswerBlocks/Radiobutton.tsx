@@ -1,7 +1,6 @@
 import React from 'react';
-import {Answer, AnswerOption, Question, Quiz} from '../../../redux/types';
+import {Answer, Question} from '../../../redux/types';
 import {useForm} from 'react-hook-form';
-import {Simulate} from 'react-dom/test-utils';
 import moment from 'moment';
 
 type Props = {
@@ -36,18 +35,21 @@ const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onChange={handleSubmit(onSubmit)}>
                 {questionObj.answerOptions?.map(ao => (
-                    <p key={ao.id}>
+                    <label
+                        key={ao.id}
+                        className="px-[13px] py-[35px] flex text-base group w-full bg-white hover:bg-[#C7DDF1] custom-btn-time cursor-pointer">
+                        <span className="mr-[20px] rounded-[50%] w-[22px] h-[22px] bg-white border-[3px] border-[#1A3661] group-hover:bg-[#1A3661] group-hover:border-white ease-out duration-300 transition" />
                         <input
-                            type={'radio'}
+                            type="radio"
+                            className="w-0 h-0"
                             value={ao.id}
                             {...register('answerOptionId')}
                         />
                         {ao.title}
-                    </p>
+                    </label>
                 ))}
-                <input type="submit" />
             </form>
         </div>
     );

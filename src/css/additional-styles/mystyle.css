@@ -1,0 +1,19 @@
+label {
+    background-color: white;
+}
+label:has(input.custom-checkbox-select-js-section-2:checked) {
+    background-color: #C7DDF1;
+}
+
+label:has(input.custom-checkbox-select-js-section-2:checked) > span.custom-btn-select-active-section-2 {
+    background-color: #1A3661;
+    border-color: white;
+}
+
+.custom-btn-next-section-3 {
+    background-color: #1A3661;
+}
+.custom-btn-next-section-3:disabled {
+    background-color: #C7DDF1;
+    cursor: not-allowed;
+}

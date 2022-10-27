@@ -1,0 +1,7 @@
+@import 'additional-styles/style.css';
+@import 'additional-styles/mystyle.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

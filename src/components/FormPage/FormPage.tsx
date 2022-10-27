@@ -2,9 +2,11 @@ import React from 'react';
 import {Form, Quiz} from '../../redux/types';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
-import {saveFormData} from '../../redux/slices/sessionSlice';
-import QuizPage from '../QuizPage';
 import moment from 'moment';
+import Logotype from '../Blocks/Logotype';
+import InputMask from 'react-input-mask';
+import ErrorBlock from './ErrorBlock';
+import {saveFormData} from '../../redux/slices/sessionSlice';
 
 type Props = {
     quiz: Quiz;
@@ -12,19 +14,30 @@ type Props = {
 };
 
 type Inputs = {
+    name: string;
+    email: string;
+    surname: string;
     phone: string;
 };
 
 const FormPage: React.FC<Props> = ({quiz, formObj}) => {
     const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
-    const {register, handleSubmit} = useForm<Inputs>({
-        shouldUseNativeValidation: true,
+    const {
+        register,
+        handleSubmit,
+        control,
+        setValue,
+        formState: {errors},
+    } = useForm<Inputs>({
+        shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
 
-    console.log('Рендер объекта формы');
+    console.log(errors);
     if (!formObj) return null;
     const onSubmit = async (data: Inputs) => {
+        console.log(data);
+        // return false;
         dispatch(
             saveFormData({
                 quiz: quiz,
@@ -37,21 +50,134 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
             }),
         );
     };
-    return (
-        <div>
-            <div>Форма: {formObj.title}</div>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    placeholder="Номер телефона"
-                    className="border border-dashed"
-                    {...register('phone', {
-                        required: 'Пожалуйста, введите номер телефона',
-                    })}
-                />
-                <input type="submit" />
-            </form>
+    return (
+        <div className="m-auto px-[20px] section-6 pb-[30px]">
+            <Logotype images={quiz.logotypes} />
+            <div className="mb-8">
+                {/*<p className="text-[#1A3661] font-medium">№1</p>*/}
+                <div className="w-full h-[16px] bg-[#C7DDF1] mt-[3px] rounded-[3px] relative">
+                    <div
+                        className="absolute top-0 left-0 rounded-[3px] h-full bg-[#1A3661]"
+                        style={{width: '85.68%'}}
+                    />
+                </div>
+            </div>
+            <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
+                <div className="lg:mb-[20px] lg:mr-[30px]">
+                    <h3 className="text-[34px] text-[#19191A] font-bold">
+                        {formObj.title}
+                    </h3>
+                    <p className="text-[22px] text-[#19191A] font-normal">
+                        {formObj.description}
+                    </p>
+                </div>
+                <div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        {formObj.show_name_field ? (
+                            <>
+                                <input
+                                    placeholder="Имя"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    {...register('name', {
+                                        required: 'Пожалуйста, введите имя',
+                                    })}
+                                />
+
+                                <ErrorBlock message={errors.name?.message} />
+                            </>
+                        ) : null}
+
+                        {formObj.show_surname_field ? (
+                            <>
+                                <input
+                                    placeholder="Фамилия"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    {...register('surname', {
+                                        required: 'Пожалуйста, введите фамилию',
+                                    })}
+                                />
+                                <ErrorBlock message={errors.surname?.message} />
+                            </>
+                        ) : null}
+
+                        {formObj.show_phone_field ? (
+                            <>
+                                <InputMask
+                                    mask={'+7 (999) 999-99-99'}
+                                    // alwaysShowMask={true}
+                                    placeholder="Номер телефона"
+                                    // onBlur={onBlur}
+                                    {...register('phone', {
+                                        setValueAs: value => {
+                                            return value.replace(/\D/g, '');
+                                        },
+                                        required: 'Пожалуйста, введите телефон',
+                                        minLength: {
+                                            value: 11,
+                                            message: 'Неверно введен телефон',
+                                        },
+                                        maxLength: {
+                                            value: 11,
+                                            message: 'Неверно введен телефон',
+                                        },
+                                    })}
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                />
+                                <ErrorBlock message={errors.phone?.message} />
+                            </>
+                        ) : null}
+
+                        {formObj.show_email_field ? (
+                            <>
+                                <input
+                                    placeholder="Email"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    {...register('email', {
+                                        required:
+                                            'Пожалуйста, введите номер телефона',
+                                    })}
+                                />
+                                <ErrorBlock message={errors.email?.message} />
+                            </>
+                        ) : null}
+                        <label className="flex my-checkbox pl-[36px] pointer relative">
+                            <input
+                                defaultChecked={true}
+                                type="checkbox"
+                                className="absolute opacity-0 pointer h-0 w-0"
+                            />
+                            <span className="checkmark" />
+                            <span className="text-sm">
+                                Я согласен получить результаты аудита на почту.
+                                <br />Я так же принимаю оферту и политику
+                                конфиденциальности
+                            </span>
+                        </label>
+                        <button
+                            type="submit"
+                            className="w-full flex items-center justify-center mt-8 py-[22px] bg-[#1A3661] uppercase text-white rounded-[5px] js-custom-btn-next-section-7">
+                            отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
+
+        // <div>
+        //     <div>Форма: {formObj.title}</div>
+        //
+        //     <form onSubmit={handleSubmit(onSubmit)}>
+        //         <input
+        //             placeholder="Номер телефона"
+        //             className="border border-dashed"
+        //             {...register('phone', {
+        //                 required: 'Пожалуйста, введите номер телефона',
+        //             })}
+        //         />
+        //         <input type="submit" />
+        //     </form>
+        // </div>
     );
 };
 

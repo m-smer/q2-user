@@ -12,6 +12,7 @@ import {
 } from '../../../redux/types';
 import PagePage from '../../PagePage';
 import CoverPage from '../../CoverPage';
+import ModalPage from '../../ModalPage';
 
 type Props = {
     quizObj: Quiz;
@@ -38,7 +39,14 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
                     />
                 );
             case 'page':
-                return (
+                const page = session.actualPage?.obj as Page;
+
+                return page.is_modal ? (
+                    <ModalPage
+                        quiz={quizObj}
+                        pageObj={session.actualPage?.obj as Page}
+                    />
+                ) : (
                     <PagePage
                         quiz={quizObj}
                         pageObj={session.actualPage?.obj as Page}
@@ -46,18 +54,17 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
                 );
             case 'result':
                 return (
-                    <ResultPage resultObj={session.actualPage?.obj as Result} />
+                    <ResultPage
+                        quiz={quizObj}
+                        resultObj={session.actualPage?.obj as Result}
+                    />
                 );
         }
         return null;
     };
 
     // console.log(session.passingData);
-    return (
-        <div className="flex h-screen">
-            <div className="m-auto">{showAction()}</div>
-        </div>
-    );
+    return showAction();
 };
 
 QuizBlock.whyDidYouRender = true;
