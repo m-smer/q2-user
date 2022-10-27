@@ -25,8 +25,7 @@ const Slider: React.FC<Props> = ({questionObj}) => {
         });
     }, [questionObj.id]);
 
-    if (questionObj.images === undefined) return null;
-    // const slides = questionObj.images?.map((img, index) => )
+    if (!questionObj.images || questionObj.images?.length === 0) return null;
 
     return (
         <>
@@ -73,10 +72,16 @@ const Slider: React.FC<Props> = ({questionObj}) => {
                         'iframe-video-content-modal fixed inset-0  items-center justify-center bg-[#00000070] ' +
                         (videoModalOpen ? 'flex' : 'hidden')
                     }>
-                    <div className="relative bg-[#1A3661] w-[60%] h-[50%]">
+                    <div className="relative bg-[#1A3661] ">
                         <div
                             onClick={() => setVideoModalOpen(false)}
-                            className="close-modal-btn absolute w-[38px] h-[38px] flex items-center justify-center bg-[#000]"></div>
+                            className="close-modal-btn absolute w-[38px] h-[38px] flex items-center justify-center bg-[#000]"
+                        />
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: questionObj.video_url,
+                            }}
+                        />
                     </div>
                 </div>
             ) : null}

@@ -125,7 +125,11 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                     className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
                                     {...register('email', {
                                         required:
-                                            'Пожалуйста, введите номер телефона',
+                                            'Пожалуйста, введите номер email',
+                                        pattern: {
+                                            value: /\S+@\S+\.\S+/,
+                                            message: 'Неверно введен email',
+                                        },
                                     })}
                                 />
                                 <ErrorBlock message={errors.email?.message} />
