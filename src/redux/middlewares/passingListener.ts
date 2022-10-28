@@ -14,12 +14,11 @@ const passingListener = createListenerMiddleware();
 passingListener.startListening({
     matcher: isAnyOf(initSession, saveFormData, saveQuestionData, savePageData),
     effect: async (action, listenerApi) => {
+        listenerApi.cancelActiveListeners();
         const quiz = action.payload.quiz;
         const state = listenerApi.getState() as RootState;
 
-        const session = state.session[
-            action.payload.quiz.id
-        ] as SessionState;
+        const session = state.session[action.payload.quiz.id] as SessionState;
 
         listenerApi.dispatch(
             passingDataApi.endpoints.sendPassingToBackend.initiate({

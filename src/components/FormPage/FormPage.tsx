@@ -1,5 +1,10 @@
 import React from 'react';
-import {Form, Quiz} from '../../redux/types';
+import {
+    apiValidationErrorResponse,
+    Form,
+    Quiz,
+    FormData,
+} from '../../redux/types';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
 import moment from 'moment';
@@ -9,43 +14,56 @@ import ErrorBlock from './ErrorBlock';
 import {saveFormData} from '../../redux/slices/sessionSlice';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 import SingleImage from '../Blocks/SingleImage';
+import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
 
 type Props = {
     quiz: Quiz;
     formObj?: Form;
 };
 
-type Inputs = {
-    name: string;
-    email: string;
-    surname: string;
-    phone: string;
-};
-
 const FormPage: React.FC<Props> = ({quiz, formObj}) => {
     const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
+    const [validate, result] = useValidateFormDataMutation();
     const {
         register,
         handleSubmit,
         formState: {errors},
-    } = useForm<Inputs>({
+        setError,
+    } = useForm<FormData>({
         shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
 
     if (!formObj) return null;
-    const onSubmit = async (data: Inputs) => {
-        dispatch(
-            saveFormData({
-                quiz: quiz,
-                formData: {
-                    ...data,
-                    formId: formObj.id,
-                    page_opened_at: page_opened_at,
-                    received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-                },
-            }),
-        );
+    const onSubmit = async (data: Partial<FormData>) => {
+        const forValidate = {
+            ...data,
+            form_id: formObj.id,
+        };
+
+        await validate(forValidate)
+            .unwrap()
+            .then(() => {
+                dispatch(
+                    saveFormData({
+                        quiz: quiz,
+                        formData: {
+                            ...data,
+                            formId: formObj.id,
+                            page_opened_at: page_opened_at,
+                            received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                        },
+                    }),
+                );
+            })
+            .catch((response: apiValidationErrorResponse<FormData>) => {
+                response.data.map(err =>
+                    setError(err.field, {
+                        type: 'manual',
+                        message: err.message,
+                    }),
+                );
+            });
     };
 
     return (

@@ -42,7 +42,10 @@ export type PageInfo = {
 
 export type FormData = {
     formId: string;
-    phone: string;
+    phone?: string;
+    email?: string;
+    surname?: string;
+    name?: string;
     page_opened_at: string;
     received_at: string;
 };
