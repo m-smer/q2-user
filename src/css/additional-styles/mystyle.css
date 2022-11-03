@@ -1,14 +1,33 @@
-label {
-    background-color: white;
+/*label {*/
+/*    background-color: white;*/
+/*}*/
+
+
+.checkbox_label:not(:first-child) {
+    border-top: 1px solid;
+    border-top-color: rgb(229, 231, 235);
 }
-label:has(input.custom-checkbox-select-js-section-2:checked) {
+
+.checkbox_label:has(input:checked) {
     background-color: #C7DDF1;
 }
 
-label:has(input.custom-checkbox-select-js-section-2:checked) > span.custom-btn-select-active-section-2 {
+.checkbox_label:has(input:checked) > span.custom-btn-select-active-section-2 {
     background-color: #1A3661;
     border-color: white;
 }
+
+@media (min-width: 640px) {
+    .checkbox_label:hover {
+        background-color: #C7DDF1;
+    }
+
+    .checkbox_label:hover > span.custom-btn-select-active-section-2 {
+        background-color: #1A3661;
+        border-color: white;
+    }
+}
+
 
 .custom-btn-next-section-3 {
     background-color: #1A3661;
@@ -16,4 +35,7 @@ label:has(input.custom-checkbox-select-js-section-2:checked) > span.custom-btn-s
 .custom-btn-next-section-3:disabled {
     background-color: #C7DDF1;
     cursor: not-allowed;
+}
+.iframe-video-content-modal iframe {
+    max-width: fit-content;
 }

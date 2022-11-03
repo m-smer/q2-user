@@ -88,7 +88,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                             <>
                                 <input
                                     placeholder="Имя"
-                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
                                     {...register('name', {
                                         required: 'Пожалуйста, введите имя',
                                     })}
@@ -102,7 +102,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                             <>
                                 <input
                                     placeholder="Фамилия"
-                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
                                     {...register('surname', {
                                         required: 'Пожалуйста, введите фамилию',
                                     })}
@@ -132,7 +132,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                             message: 'Неверно введен телефон',
                                         },
                                     })}
-                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
                                 />
                                 <ErrorBlock message={errors.phone?.message} />
                             </>
@@ -142,7 +142,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                             <>
                                 <input
                                     placeholder="Email"
-                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0"
+                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
                                     {...register('email', {
                                         required:
                                             'Пожалуйста, введите номер email',
@@ -155,7 +155,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                 <ErrorBlock message={errors.email?.message} />
                             </>
                         ) : null}
-                        <label className="flex my-checkbox pl-[36px] pointer relative">
+                        <label className="flex my-checkbox pl-[36px] pointer relative agreement">
                             <input
                                 defaultChecked={true}
                                 type="checkbox"

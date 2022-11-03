@@ -23,7 +23,7 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
                 <ProgressBar quiz={quiz} />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
-                <div className="mb-[20px] lg:mb-0 lg:border-r border-[#ccc]">
+                <div className="mb-[20px] lg:mb-0 lg:border-r border-[#ccc] result_left">
                     <h3 className="text-[28px] text-dark font-bold">
                         {resultObj.title}
                     </h3>

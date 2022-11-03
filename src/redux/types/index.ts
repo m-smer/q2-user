@@ -12,6 +12,7 @@ export type Quiz = {
     connections: Connection[];
     logotypes: Image[];
     cover_images: Image[];
+    favicons: Image[];
     first_element_id: string;
     prohibited_phones: string;
     allowed_emails: string;

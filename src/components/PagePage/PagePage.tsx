@@ -30,7 +30,6 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
                 },
             }),
         );
-        console.log(123);
     };
     return (
         <div className="m-auto flex flex-col container px-[20px] items-center">

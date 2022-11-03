@@ -39,8 +39,8 @@ const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
                 {questionObj.answerOptions?.map(ao => (
                     <label
                         key={ao.id}
-                        className="px-[13px] py-[35px] flex text-base group w-full bg-white hover:bg-[#C7DDF1] custom-btn-time cursor-pointer">
-                        <span className="mr-[20px] rounded-[50%] w-[22px] h-[22px] bg-white border-[3px] border-[#1A3661] group-hover:bg-[#1A3661] group-hover:border-white ease-out duration-300 transition" />
+                        className="px-[13px] py-[35px] flex text-base group w-full custom-btn-time cursor-pointer checkbox_label">
+                        <span className="mr-[20px] rounded-[50%] w-[22px] h-[22px] border-[3px] border-[#1A3661] ease-out duration-300 transition custom-btn-select-active-section-2" />
                         <input
                             type="radio"
                             className="w-0 h-0"
