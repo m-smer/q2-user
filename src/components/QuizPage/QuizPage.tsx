@@ -7,32 +7,13 @@ import {useAppDispatch} from '../../redux/hooks';
 import {useSession} from '../../redux/hooks/useSession';
 import {useUtms} from '../../redux/hooks/useUtms';
 import {Quiz} from '../../redux/types';
+import Includes from '../Blocks/Includes';
 
 const QuizPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const {data: quiz, isFetching, isLoading} = useQuiz();
     const session = useSession();
     const {utms, areUtmsEmpty} = useUtms();
-
-    useEffect(() => {
-        if (quiz) {
-            document.title = quiz.title;
-            document.head.insertAdjacentHTML(
-                'beforeend',
-                '<link href="' +
-                    process.env.REACT_APP_CSS_RESOURCE_DIR +
-                    '/' +
-                    quiz.id +
-                    '.css" rel="stylesheet">',
-            );
-            if (quiz.favicons.length) {
-                document.head.insertAdjacentHTML(
-                    'beforeend',
-                    '<link rel="icon" href="' + quiz.favicons[0].dataURL + '">',
-                );
-            }
-        }
-    }, [quiz]);
 
     useEffect(() => {
         if (quiz && session === undefined) {
@@ -48,6 +29,7 @@ const QuizPage: React.FC = () => {
 
     return (
         <>
+            <Includes quiz={quiz} />
             <QuizBlock quizObj={quiz} session={session} />
         </>
     );

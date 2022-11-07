@@ -167,6 +167,7 @@ export type AnswerOption = {
     points: number;
     status: 'on' | 'off' | 'deleted';
     is_right: boolean;
+    onclick_action: string;
 };
 
 export type apiValidationError<T> = {
