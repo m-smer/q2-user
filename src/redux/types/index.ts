@@ -45,7 +45,7 @@ export type PassingDataToSend = {
 };
 
 export type PageInfo = {
-    obj: Form | Question | Result;
+    obj: Form | Question | Result | Page;
     type: 'question' | 'form' | 'result' | 'page';
 };
 
@@ -140,6 +140,7 @@ export type Form = {
     quiz_id: string;
     title: string;
     description: string;
+    onsubmit_action: string;
     images?: Image[];
     show_name_field?: boolean;
     show_surname_field?: boolean;

@@ -68,6 +68,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         },
                     }),
                 );
+                eval(formObj.onsubmit_action);
             })
             .catch((response: apiValidationErrorResponse<FormData>) => {
                 console.log(response);
