@@ -49,6 +49,19 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         quiz: quiz,
                         formData: {
                             ...data,
+                            extra_data: {
+                                comagic: eval(
+                                    "(typeof Comagic === 'function' ? Comagic?.getCredentials() : [])",
+                                ),
+                                calltouch: {
+                                    sessionId: eval(
+                                        "typeof window.ct === 'function' ? window.ct('calltracking_params','" +
+                                            quiz.calltouch_mod_id +
+                                            "')?.sessionId : null",
+                                    ),
+                                    requestUrl: eval('location.href'),
+                                },
+                            },
                             formId: formObj.id,
                             page_opened_at: page_opened_at,
                             received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -57,6 +70,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                 );
             })
             .catch((response: apiValidationErrorResponse<FormData>) => {
+                console.log(response);
                 response.data.map(err =>
                     setError(err.field, {
                         type: 'manual',
@@ -177,21 +191,6 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                 </div>
             </div>
         </div>
-
-        // <div>
-        //     <div>Форма: {formObj.title}</div>
-        //
-        //     <form onSubmit={handleSubmit(onSubmit)}>
-        //         <input
-        //             placeholder="Номер телефона"
-        //             className="border border-dashed"
-        //             {...register('phone', {
-        //                 required: 'Пожалуйста, введите номер телефона',
-        //             })}
-        //         />
-        //         <input type="submit" />
-        //     </form>
-        // </div>
     );
 };
 

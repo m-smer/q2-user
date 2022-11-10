@@ -22,6 +22,14 @@ export type Quiz = {
     cover_subtitle: string | null;
     cover_text: string | null;
     notice_emails: string;
+    calltouch_mod_id?: string;
+    calltouch_site_id?: string;
+    comagic_site_key?: string;
+    ym_id?: string;
+    vk_id?: string;
+    tm_id?: string;
+    gtm_id?: string;
+    ga_id?: string;
 };
 
 export type SessionState = {
@@ -49,6 +57,7 @@ export type FormData = {
     name?: string;
     page_opened_at: string;
     received_at: string;
+    extra_data?: any;
 };
 
 export type PageData = {

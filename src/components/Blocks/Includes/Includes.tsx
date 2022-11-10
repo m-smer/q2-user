@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../redux/types';
+import Comagic from './Integrations/Comagic';
+import Calltouch from './Integrations/Calltouch';
+import YandexMetrika from './Integrations/YandexMetrika';
+import Vkontakte from './Integrations/TargetMail';
+import TargetMail from './Integrations/TargetMail';
+import GoogleAnalytics from './Integrations/GoogleAnalytics';
+import GoogleTagManager from './Integrations/GoogleTagManager';
 
 type Props = {
     quiz: Quiz;
@@ -7,12 +14,9 @@ type Props = {
 
 const Includes: React.FC<Props> = ({quiz}) => {
     useEffect(() => {
-        if (quiz) {
-            document.title = quiz.title;
-            includeCssFile();
-            includeJsFiles();
-            includeFavicon();
-        }
+        document.title = quiz.title;
+        includeCssFile();
+        includeFavicon();
     }, [quiz]);
 
     const includeFavicon = () => {
@@ -31,21 +35,17 @@ const Includes: React.FC<Props> = ({quiz}) => {
         document.head.appendChild(css);
     };
 
-    const includeJsFiles = () => {
-        const resDir = process.env.REACT_APP_QUIZ_RESOURCE_DIR;
-
-        const script_head = document.createElement('script');
-        script_head.src = resDir + '/' + quiz.id + '/f_head.js';
-        script_head.async = true;
-        document.head.appendChild(script_head);
-
-        const script_body = document.createElement('script');
-        script_body.src = resDir + '/' + quiz.id + '/f_body.js';
-        script_body.async = true;
-        document.body.appendChild(script_body);
-    };
-
-    return null;
+    return (
+        <>
+            <Comagic quiz={quiz} />
+            <Calltouch quiz={quiz} />
+            <YandexMetrika quiz={quiz} />
+            <Vkontakte quiz={quiz} />
+            <TargetMail quiz={quiz} />
+            <GoogleAnalytics quiz={quiz} />
+            <GoogleTagManager quiz={quiz} />
+        </>
+    );
 };
 
 export default Includes;
