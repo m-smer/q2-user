@@ -20,7 +20,7 @@ const Includes: React.FC<Props> = ({quiz}) => {
     }, [quiz]);
 
     const includeFavicon = () => {
-        if (!quiz.favicons[0].dataURL) return;
+        if (!quiz.favicons[0]?.dataURL) return;
         const link = document.createElement('link');
         link.rel = 'icon';
         link.href = quiz.favicons[0].dataURL;
