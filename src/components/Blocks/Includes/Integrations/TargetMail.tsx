@@ -1,24 +1,39 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../../redux/types';
+import {useSession} from '../../../../redux/hooks/useSession';
 
 type Props = {
     quiz: Quiz;
 };
 
 const TargetMail: React.FC<Props> = ({quiz}) => {
+    const session = useSession();
+
     useEffect(() => {
-        if (quiz.tm_id) {
-            includeHeadScript();
-        }
+        if (!quiz.tm_id) return;
+        includeHeadScript();
+
+        console.log('ТМ: include');
     }, [quiz]);
+
+    useEffect(() => {
+        if (!quiz.tm_id) return;
+
+        // @ts-ignore
+        var _tmr = window._tmr || (window._tmr = []);
+        _tmr.push({
+            id: quiz.tm_id,
+            type: 'pageView',
+            start: new Date().getTime(),
+            pid: 'USER_ID',
+        });
+
+        console.log('ТМ: pageView');
+    }, [session?.actualPage?.obj, quiz.tm_id]);
 
     const includeHeadScript = () => {
         const script1 = document.createElement('script');
         script1.innerHTML =
-            'var _tmr = window._tmr || (window._tmr = []);\n' +
-            '_tmr.push({id: "' +
-            quiz.tm_id +
-            '", type: "pageView", start: (new Date()).getTime(), pid: "USER_ID"});\n' +
             '(function (d, w, id) {\n' +
             '  if (d.getElementById(id)) return;\n' +
             '  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;\n' +

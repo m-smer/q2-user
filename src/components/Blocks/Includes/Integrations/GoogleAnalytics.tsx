@@ -1,31 +1,32 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../../redux/types';
+import ReactGA from 'react-ga';
+import {useSession} from '../../../../redux/hooks/useSession';
 
 type Props = {
     quiz: Quiz;
 };
 
 const GoogleAnalytics: React.FC<Props> = ({quiz}) => {
+    const session = useSession();
+
     useEffect(() => {
-        if (quiz.ga_id) {
-            includeHeadScript();
-        }
+        if (!quiz.ga_id) return;
+        includeHeadScript();
+
+        console.log('GA: include');
     }, [quiz]);
 
-    const includeHeadScript = () => {
-        const script1 = document.createElement('script');
-        script1.async = true;
-        script1.src = '//www.google-analytics.com/analytics.js';
-        document.head.appendChild(script1);
+    useEffect(() => {
+        if (!quiz.ga_id) return;
+        ReactGA.pageview(window.location.pathname + window.location.search);
 
-        const script2 = document.createElement('script');
-        script2.innerHTML =
-            '    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;\n' +
-            '    ga("create", "' +
-            quiz.ga_id +
-            '", "auto");\n' +
-            '    ga("send", "pageview");';
-        document.head.appendChild(script2);
+        console.log('GA: pageview');
+    }, [session?.actualPage?.obj, quiz.ga_id]);
+
+    const includeHeadScript = () => {
+        if (!quiz.ga_id) return;
+        ReactGA.initialize(quiz.ga_id);
     };
 
     return null;

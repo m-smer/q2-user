@@ -3,10 +3,11 @@ import {Quiz} from '../../../redux/types';
 import Comagic from './Integrations/Comagic';
 import Calltouch from './Integrations/Calltouch';
 import YandexMetrika from './Integrations/YandexMetrika';
-import Vkontakte from './Integrations/TargetMail';
+import VkRetargeting from './Integrations/VkRetargeting';
 import TargetMail from './Integrations/TargetMail';
 import GoogleAnalytics from './Integrations/GoogleAnalytics';
 import GoogleTagManager from './Integrations/GoogleTagManager';
+import VkAds from './Integrations/VkAds';
 
 type Props = {
     quiz: Quiz;
@@ -40,7 +41,8 @@ const Includes: React.FC<Props> = ({quiz}) => {
             <Comagic quiz={quiz} />
             <Calltouch quiz={quiz} />
             <YandexMetrika quiz={quiz} />
-            <Vkontakte quiz={quiz} />
+            <VkRetargeting quiz={quiz} />
+            <VkAds quiz={quiz} />
             <TargetMail quiz={quiz} />
             <GoogleAnalytics quiz={quiz} />
             <GoogleTagManager quiz={quiz} />

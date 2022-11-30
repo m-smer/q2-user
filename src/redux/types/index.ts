@@ -27,6 +27,7 @@ export type Quiz = {
     comagic_site_key?: string;
     ym_id?: string;
     vk_id?: string;
+    vk_ads_id?: string;
     tm_id?: string;
     gtm_id?: string;
     ga_id?: string;
