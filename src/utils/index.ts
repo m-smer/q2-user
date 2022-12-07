@@ -2,9 +2,31 @@ import {
     Connection,
     PageInfo,
     PassingData,
+    PassingMetaData,
     Quiz,
     SessionState,
 } from '../redux/types';
+
+export const replaceMacrosToUtms = (
+    url: string,
+    session: SessionState,
+): string => {
+    const meta = session.passingData?.meta;
+    const utms = [
+        'utm_source',
+        'utm_campaign',
+        'utm_term',
+        'utm_medium',
+        'utm_content',
+    ];
+
+    utms.map(utm => {
+        const replaceTo =
+            meta && (meta[utm as keyof PassingMetaData] as string);
+        url = url.replace('{' + utm + '}', replaceTo ?? '');
+    });
+    return url;
+};
 
 export const pageDataById = (
     quiz: Quiz,

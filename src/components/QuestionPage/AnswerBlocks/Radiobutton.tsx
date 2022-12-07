@@ -44,7 +44,7 @@ const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
                         <input
                             onClick={() => eval(ao.onclick_action)}
                             type="radio"
-                            className="w-0 h-0"
+                            className="w-0 h-0 hidden"
                             value={ao.id}
                             {...register('answerOptionId')}
                         />

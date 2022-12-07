@@ -1,9 +1,10 @@
 import React from 'react';
-import {Question, Quiz, Result} from '../../redux/types';
+import {Quiz, Result} from '../../redux/types';
 import SingleImage from '../Blocks/SingleImage';
 import Logotype from '../Blocks/Logotype';
-import QuestionNumber from '../QuestionPage/QuestionNumber';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
+import {replaceMacrosToUtms} from '../../utils';
+import {useSession} from '../../redux/hooks/useSession';
 
 type Props = {
     quiz: Quiz;
@@ -11,11 +12,17 @@ type Props = {
 };
 
 const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
+    const session = useSession();
     if (!resultObj) return null;
-    if (resultObj.type === 'redirect') {
-        window.location.href = resultObj.redirect_url;
+
+    if (resultObj.type === 'redirect' && session) {
+        window.location.href = replaceMacrosToUtms(
+            resultObj.redirect_url,
+            session,
+        );
         return null;
     }
+
     return (
         <div className="m-auto px-[20px] section-7 pb-[30px]">
             <Logotype images={quiz.logotypes} />

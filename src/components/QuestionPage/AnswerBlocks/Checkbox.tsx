@@ -63,7 +63,7 @@ const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
                             type="checkbox"
                             value={ao.id}
                             id={'i' + ao.id}
-                            className="w-0 h-0 custom-checkbox-select-js-section-2"
+                            className="w-0 h-0 custom-checkbox-select-js-section-2 hidden"
                             {...register('answerOptionIds')}
                         />
                         <span className="labelText">{ao.title}</span>
