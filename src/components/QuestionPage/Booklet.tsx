@@ -13,10 +13,16 @@ const Booklet: React.FC<Props> = ({questionObj}) => {
 
             {questionObj.subtitle || questionObj.description ? (
                 <div className="px-[20px] pb-[70px] lg:mr-[30%] bg-[#F8F8F8] rounded-b-md">
-                    <h3 className="text-2xl font-bold mb-[10px]">
-                        {questionObj.subtitle}
-                    </h3>
-                    {questionObj.description}
+                    {questionObj.subtitle && (
+                        <h3 className="text-2xl font-bold mb-[10px]">
+                            {questionObj.subtitle}
+                        </h3>
+                    )}
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: questionObj.description,
+                        }}
+                    />
                 </div>
             ) : null}
         </>

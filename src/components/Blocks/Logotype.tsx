@@ -11,7 +11,7 @@ const Logotype: React.FC<Props> = ({images}) => {
 
     return (
         <div className="logo my-6 flex items-center justify-center">
-            <img className="max-h-[45px]" src={image.dataURL} alt="logo" />
+            <img className="max-h-[100px]" src={image.dataURL} alt="logo" />
         </div>
     );
 };
