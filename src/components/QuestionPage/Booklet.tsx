@@ -12,7 +12,7 @@ const Booklet: React.FC<Props> = ({questionObj}) => {
             <Slider questionObj={questionObj} />
 
             {questionObj.subtitle || questionObj.description ? (
-                <div className="px-[20px] pb-[70px] lg:mr-[30%] bg-[#F8F8F8] rounded-b-md">
+                <div className="px-[20px] pb-[70px] lg:mr-[10%] bg-[#F8F8F8] rounded-b-md">
                     {questionObj.subtitle && (
                         <h3 className="text-2xl font-bold mb-[10px]">
                             {questionObj.subtitle}

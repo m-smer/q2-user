@@ -83,9 +83,9 @@
     background: #fff;
     overflow-y: scroll;
     -ms-overflow-style: none;
-    width: 1140px;
+    width: 920px;
 }
-@media (max-width: 1140px) {
+@media (max-width: 920px) {
     .section-1,
     .section-2,
     .section-3,

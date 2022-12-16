@@ -29,7 +29,7 @@ const Slider: React.FC<Props> = ({questionObj}) => {
 
     return (
         <>
-            <div className="custom-slider lg:mr-[30%] bg-[#F8F8F8] rounded-t-md">
+            <div className="custom-slider lg:mr-[10%] bg-[#F8F8F8] rounded-t-md">
                 <div className="swiper">
                     <div className="swiper-wrapper">
                         {questionObj.images?.map((img, index) => (
