@@ -39,3 +39,14 @@
 .iframe-video-content-modal iframe {
     max-width: fit-content;
 }
+
+.question-description ul {
+    list-style-type: disc;
+}
+
+.question-description ol {
+    list-style-type: decimal;
+}
+.question-description li {
+    margin-left: 25px;
+}

@@ -181,9 +181,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                 Я согласен на обработку персональных данных и
                                 результатов тестирования.
                                 <br />А также принимаю условия{' '}
-                                <a
-                                    href="https://go.quizzica.ru/legal"
-                                    target="_blank">
+                                <a href="/legal.html" target="_blank">
                                     политики конфиденциальности
                                 </a>
                                 .
