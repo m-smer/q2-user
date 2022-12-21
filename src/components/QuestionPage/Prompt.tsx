@@ -20,7 +20,7 @@ const Prompt: React.FC<Props> = ({questionObj}) => {
         default:
             text = 'ответьте на вопрос';
     }
-    return <p className="ml-[10px]">{text}</p>;
+    return <p className="ml-[10px] prompt-info-text">{text}</p>;
 };
 
 export default Prompt;

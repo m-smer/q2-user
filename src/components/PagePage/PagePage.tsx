@@ -37,7 +37,7 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
             <div className="mb-8 overflow-hidden max-w-[350px]">
                 <SingleImage images={pageObj.images} />
             </div>
-            <div className="sm:text-5xl w-[240px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661]">
+            <div className="sm:text-5xl w-[240px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661] whitespace-pre-line">
                 {pageObj.title}
             </div>
             <button

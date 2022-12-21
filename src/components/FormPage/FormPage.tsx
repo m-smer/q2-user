@@ -89,7 +89,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="lg:mb-[20px] lg:mr-[10%]">
-                    <h3 className="text-[34px] text-[#19191A] font-black leading-[1.2]">
+                    <h3 className="text-[34px] text-[#19191A] font-black leading-[1.2] whitespace-pre-line">
                         {formObj.title}
                     </h3>
                     <SingleImage images={formObj.images} />

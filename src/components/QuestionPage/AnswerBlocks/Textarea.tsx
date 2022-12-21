@@ -33,12 +33,12 @@ const Textarea: React.FC<Props> = ({setAnswer, questionObj}) => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="w-full h-[190px] border border-[#C7DDF1] rounded-[5px] text-base text_input">
+                <div className="w-full h-[190px] border border-[#C7DDF1] rounded-[5px] text-base ">
                     <textarea
                         {...register('answerText', {
                             required: 'Пожалуйста, введите ответ',
                         })}
-                        className="py-[15px] px-[20px] outline-0 resize-none w-full h-full"
+                        className="py-[15px] px-[20px] outline-0 resize-none w-full h-full text_input"
                     />
                 </div>
 
