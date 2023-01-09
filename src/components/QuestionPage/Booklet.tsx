@@ -14,7 +14,7 @@ const Booklet: React.FC<Props> = ({questionObj}) => {
             {questionObj.subtitle || questionObj.description ? (
                 <div className="px-[20px] pb-[70px] lg:mr-[10%] bg-[#F8F8F8] rounded-b-md question-description">
                     {questionObj.subtitle && (
-                        <h3 className="font-bold mb-[10px] text-[1.5rem] leading-[1.25] whitespace-pre-line">
+                        <h3 className="font-bold mb-[10px] text-[22px] leading-[1.25] whitespace-pre-line">
                             {questionObj.subtitle}
                         </h3>
                     )}

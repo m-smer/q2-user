@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../redux/types';
-import Comagic from './Integrations/Comagic';
 import Calltouch from './Integrations/Calltouch';
 import YandexMetrika from './Integrations/YandexMetrika';
 import VkRetargeting from './Integrations/VkRetargeting';
@@ -38,7 +37,6 @@ const Includes: React.FC<Props> = ({quiz}) => {
 
     return (
         <>
-            <Comagic quiz={quiz} />
             <Calltouch quiz={quiz} />
             <YandexMetrika quiz={quiz} />
             <VkRetargeting quiz={quiz} />

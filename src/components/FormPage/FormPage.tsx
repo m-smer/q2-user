@@ -50,9 +50,6 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         formData: {
                             ...data,
                             extra_data: {
-                                comagic: eval(
-                                    "(typeof Comagic === 'function' ? Comagic?.getCredentials() : [])",
-                                ),
                                 calltouch: {
                                     sessionId: eval(
                                         "typeof window.ct === 'function' ? window.ct('calltracking_params','" +
@@ -89,11 +86,11 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="lg:mb-[20px] lg:mr-[10%]">
-                    <h3 className="text-[34px] text-[#19191A] font-black leading-[1.2] whitespace-pre-line">
+                    <h3 className="text-[22px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line">
                         {formObj.title}
                     </h3>
                     <SingleImage images={formObj.images} />
-                    <p className="text-[22px] text-[#19191A] font-normal mt-[30px]">
+                    <p className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px]">
                         {formObj.description}
                     </p>
                 </div>
@@ -179,8 +176,8 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                             <span className="checkmark" />
                             <span className="text-sm">
                                 Я согласен на обработку персональных данных и
-                                результатов тестирования.
-                                <br />А также принимаю условия{' '}
+                                результатов тестирования. А также принимаю
+                                условия{' '}
                                 <a href="/legal.html" target="_blank">
                                     политики конфиденциальности
                                 </a>
