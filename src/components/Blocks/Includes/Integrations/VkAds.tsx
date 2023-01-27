@@ -28,6 +28,14 @@ const VkAds: React.FC<Props> = ({quiz}) => {
             pid: 'USER_ID',
         });
 
+        _tmr.push({
+            type: 'reachGoal',
+            id: quiz.vk_ads_id,
+            value: 'VALUE',
+            goal: 'Page_View',
+            params: {product_id: 'PRODUCT_ID'},
+        });
+
         console.log('VKAds: pageView');
     }, [session?.actualPage?.obj, quiz.vk_ads_id]);
 
