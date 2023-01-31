@@ -4,6 +4,7 @@ export type Quiz = {
     url_id: string;
     domain: string;
     shuffle_questions: boolean;
+    tenacious_sessions: boolean;
     status: 'on' | 'off' | 'deleted';
     questions: Question[];
     results: Result[];

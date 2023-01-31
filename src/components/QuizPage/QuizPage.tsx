@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuiz} from '../../redux/hooks/useQuiz';
 import QuizBlock from './QuizBlock';
 import ActivityIndicator from '../ActivityIndicator';
@@ -13,14 +13,19 @@ const QuizPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const {data: quiz, isFetching, isLoading} = useQuiz();
     const session = useSession();
-    const {utms, areUtmsEmpty} = useUtms();
+    const {utms} = useUtms();
+    const [pageUpdated, setPageUpdated] = useState(true);
 
     useEffect(() => {
-        if (quiz && session === undefined) {
+        const needInitSession =
+            quiz && ((pageUpdated && !quiz.tenacious_sessions) || !session?.id);
+
+        if (needInitSession) {
             console.log('Инициализирую сессию');
+            setPageUpdated(false);
             dispatch(initSession({quiz, utms}));
         }
-    }, [session?.id, quiz?.id]);
+    }, [quiz?.id]);
 
     if (isFetching || isLoading || (quiz && !session?.actualPage?.obj))
         return <ActivityIndicator />;

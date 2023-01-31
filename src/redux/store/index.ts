@@ -25,7 +25,11 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    blacklist: ['quizApi', 'session', 'passingDataApi'],
+    // blacklist: ['quizApi', 'session', 'passingDataApi'],
+    whitelist: [
+        // 'quizApi',
+        'session',
+    ],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
