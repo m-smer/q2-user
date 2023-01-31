@@ -20,17 +20,18 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
     const {utms} = useUtms();
     if (!resultObj) return null;
 
+    const recreateSession = () => {
+        dispatch(initSession({quiz, utms}));
+    };
+
     if (resultObj.type === 'redirect' && session) {
+        if (quiz.tenacious_sessions) recreateSession();
         window.location.href = replaceMacrosToUtms(
             resultObj.redirect_url,
             session,
         );
         return null;
     }
-
-    const recreateSession = () => {
-        dispatch(initSession({quiz, utms}));
-    };
 
     return (
         <div className="m-auto px-[20px] section-7 pb-[30px]">
