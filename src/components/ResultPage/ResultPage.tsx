@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Quiz, Result} from '../../redux/types';
 import SingleImage from '../Blocks/SingleImage';
 import Logotype from '../Blocks/Logotype';
@@ -8,6 +8,7 @@ import {useSession} from '../../redux/hooks/useSession';
 import {initSession} from '../../redux/slices/sessionSlice';
 import {useAppDispatch} from '../../redux/hooks';
 import {useUtms} from '../../redux/hooks/useUtms';
+import {useNavigate} from 'react-router-dom';
 
 type Props = {
     quiz: Quiz;
@@ -18,20 +19,24 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
     const dispatch = useAppDispatch();
     const session = useSession();
     const {utms} = useUtms();
-    if (!resultObj) return null;
+    const navigate = useNavigate();
 
     const recreateSession = () => {
         dispatch(initSession({quiz, utms}));
     };
 
-    if (resultObj.type === 'redirect' && session) {
-        if (quiz.tenacious_sessions) recreateSession();
-        window.location.href = replaceMacrosToUtms(
-            resultObj.redirect_url,
-            session,
-        );
-        return null;
-    }
+    useEffect(() => {
+        if (resultObj?.type === 'redirect' && session) {
+            recreateSession();
+            navigate('/redirect');
+            window.location.href = replaceMacrosToUtms(
+                resultObj.redirect_url,
+                session,
+            );
+        }
+    }, [resultObj?.type]);
+
+    if (!resultObj) return null;
 
     return (
         <div className="m-auto px-[20px] section-7 pb-[30px]">
