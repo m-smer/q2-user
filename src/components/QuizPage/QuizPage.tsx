@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useQuiz} from '../../redux/hooks/useQuiz';
 import QuizBlock from './QuizBlock';
 import ActivityIndicator from '../ActivityIndicator';
-import {initSession} from '../../redux/slices/sessionSlice';
+import {initSession, setUtms} from '../../redux/slices/sessionSlice';
 import {useAppDispatch} from '../../redux/hooks';
 import {useSession} from '../../redux/hooks/useSession';
 import {useUtms} from '../../redux/hooks/useUtms';
@@ -23,9 +23,23 @@ const QuizPage: React.FC = () => {
         if (needInitSession) {
             console.log('Инициализирую сессию');
             setPageUpdated(false);
-            dispatch(initSession({quiz, utms}));
+            dispatch(initSession({quiz}));
         }
     }, [quiz?.id]);
+
+    useEffect(() => {
+        if (quiz) {
+            console.log('Записываю utm метки');
+            dispatch(setUtms({quiz, utms}));
+        }
+    }, [
+        quiz,
+        utms.utm_campaign,
+        utms.utm_medium,
+        utms.utm_term,
+        utms.utm_source,
+        utms.utm_content,
+    ]);
 
     if (isFetching || isLoading || (quiz && !session?.actualPage?.obj))
         return <ActivityIndicator />;

@@ -29,7 +29,7 @@ const slice = createSlice({
     reducers: {
         initSession: (
             state,
-            {payload: {quiz, utms}}: PayloadAction<{quiz: Quiz; utms: UTMs}>,
+            {payload: {quiz}}: PayloadAction<{quiz: Quiz}>,
         ) => {
             state[quiz.id] = {
                 id: nanoid(20),
@@ -43,10 +43,24 @@ const slice = createSlice({
                         last_action_at: moment().format('YYYY-MM-DD HH:mm:ss'),
                         points: 0,
                         result_id: null,
-                        ...utms,
                     },
                 },
             };
+        },
+        setUtms: (
+            state,
+            {payload: {quiz, utms}}: PayloadAction<{quiz: Quiz; utms: UTMs}>,
+        ) => {
+            // @ts-ignore
+            state[quiz.id].passingData.meta.utm_campaign = utms.utm_campaign;
+            // @ts-ignore
+            state[quiz.id].passingData.meta.utm_source = utms.utm_source;
+            // @ts-ignore
+            state[quiz.id].passingData.meta.utm_medium = utms.utm_medium;
+            // @ts-ignore
+            state[quiz.id].passingData.meta.utm_term = utms.utm_term;
+            // @ts-ignore
+            state[quiz.id].passingData.meta.utm_content = utms.utm_content;
         },
         saveFormData: (
             state,
@@ -57,16 +71,16 @@ const slice = createSlice({
             // @ts-ignore
             state[quiz.id].passingData.forms[formData.formId] = formData;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at =
-                moment().format('YYYY-MM-DD HH:mm:ss');
+            state[quiz.id].passingData.meta.last_action_at = moment().format(
+                'YYYY-MM-DD HH:mm:ss',
+            );
 
             const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
                 state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id =
-                        nextPage.obj.id;
+                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
                 }
             }
         },
@@ -80,16 +94,16 @@ const slice = createSlice({
             // @ts-ignore
             state[quiz.id].passingData.pages[pageData.page_id] = pageData;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at =
-                moment().format('YYYY-MM-DD HH:mm:ss');
+            state[quiz.id].passingData.meta.last_action_at = moment().format(
+                'YYYY-MM-DD HH:mm:ss',
+            );
 
             const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
                 state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id =
-                        nextPage.obj.id;
+                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
                 }
             }
         },
@@ -102,8 +116,9 @@ const slice = createSlice({
             //@ts-ignore
             state[quiz.id].passingData.answers[question.id] = answer;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at =
-                moment().format('YYYY-MM-DD HH:mm:ss');
+            state[quiz.id].passingData.meta.last_action_at = moment().format(
+                'YYYY-MM-DD HH:mm:ss',
+            );
             // @ts-ignore
             state[quiz.id].passingData.meta.points += answer.points;
 
@@ -112,16 +127,20 @@ const slice = createSlice({
                 state[quiz.id].actualPage = nextPage;
                 if (nextPage.type === 'result') {
                     // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id =
-                        nextPage.obj.id;
+                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
                 }
             }
         },
     },
 });
 
-export const {initSession, saveFormData, savePageData, saveQuestionData} =
-    slice.actions;
+export const {
+    initSession,
+    saveFormData,
+    savePageData,
+    saveQuestionData,
+    setUtms,
+} = slice.actions;
 
 export const sessionReducer = slice.reducer;
 

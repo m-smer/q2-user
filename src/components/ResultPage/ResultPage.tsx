@@ -7,7 +7,6 @@ import {replaceMacrosToUtms} from '../../utils';
 import {useSession} from '../../redux/hooks/useSession';
 import {initSession} from '../../redux/slices/sessionSlice';
 import {useAppDispatch} from '../../redux/hooks';
-import {useUtms} from '../../redux/hooks/useUtms';
 import {useNavigate} from 'react-router-dom';
 
 type Props = {
@@ -18,11 +17,10 @@ type Props = {
 const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
     const dispatch = useAppDispatch();
     const session = useSession();
-    const {utms} = useUtms();
     const navigate = useNavigate();
 
     const recreateSession = () => {
-        dispatch(initSession({quiz, utms}));
+        dispatch(initSession({quiz}));
     };
 
     useEffect(() => {
