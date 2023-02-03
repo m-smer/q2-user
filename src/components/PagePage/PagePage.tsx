@@ -37,13 +37,18 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
             <div className="mb-8 overflow-hidden max-w-[350px]">
                 <SingleImage images={pageObj.images} />
             </div>
-            <div className="sm:text-5xl w-[240px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661] whitespace-pre-line">
+            <div className="sm:text-5xl max-w-[400px] sm:w-full text-center text-[32px] mb-10 text-dark sm:text-[#1A3661] whitespace-pre-line">
                 {pageObj.title}
             </div>
+            {pageObj.description && (
+                <div className="mb-8  text-[22px] whitespace-pre-line text-center">
+                    {pageObj.description}
+                </div>
+            )}
             <button
                 onClick={onSubmit}
                 className="bg-[#1A3661] text-white sm:px-36 py-5 w-full sm:w-auto text-sm rounded-md custom-btn-1">
-                {pageObj.button_text ?? 'Далее'}
+                {pageObj.button_text !== '' ? pageObj.button_text : 'Далее'}
             </button>
         </div>
     );

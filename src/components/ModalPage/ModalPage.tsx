@@ -38,10 +38,15 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
                     <span className="js-text-content" />
                 </p>
                 <SingleImage images={pageObj.images} />
+                {pageObj.description && (
+                    <div className="mb-4 text-[17px] whitespace-pre-line text-center">
+                        {pageObj.description}
+                    </div>
+                )}
                 <button
                     onClick={onSubmit}
                     className="w-full flex items-center justify-center mt-8 py-[22px] bg-[#1A3661] uppercase text-white rounded-[5px] js-custom-btn-next-section-2">
-                    {pageObj.button_text ?? 'Далее'}
+                    {pageObj.button_text !== '' ? pageObj.button_text : 'Далее'}
                 </button>
             </div>
         </div>
