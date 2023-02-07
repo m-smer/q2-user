@@ -86,11 +86,11 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="lg:mb-[20px] lg:mr-[10%]">
-                    <h3 className="text-[22px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line">
+                    <h3 className="text-[22px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line mainTitle">
                         {formObj.title}
                     </h3>
                     <SingleImage images={formObj.images} />
-                    <p className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line">
+                    <p className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText">
                         {formObj.description}
                     </p>
                 </div>
@@ -174,7 +174,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                 className="absolute opacity-0 pointer h-0 w-0"
                             />
                             <span className="checkmark" />
-                            <span className="text-sm">
+                            <span className="text-sm mainText">
                                 Я согласен на обработку персональных данных и
                                 результатов тестирования. А также принимаю
                                 условия{' '}

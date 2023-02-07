@@ -19,6 +19,7 @@ const Booklet: React.FC<Props> = ({questionObj}) => {
                         </h3>
                     )}
                     <div
+                        className="mainText"
                         dangerouslySetInnerHTML={{
                             __html: questionObj.description,
                         }}

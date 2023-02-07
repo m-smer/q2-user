@@ -33,13 +33,13 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
     return (
         <div className="bg-[#303030] fixed inset-0 flex items-center justify-center custom-modal-window">
             <div className="py-[50px] px-[40px] bg-white rounded-md">
-                <p className="lg:w-[394px] w-full">
+                <p className="lg:w-[394px] w-full mainTitle">
                     {pageObj.title}
                     <span className="js-text-content" />
                 </p>
                 <SingleImage images={pageObj.images} />
                 {pageObj.description && (
-                    <div className="mb-4 text-[17px] whitespace-pre-line text-center">
+                    <div className="mb-4 text-[17px] whitespace-pre-line text-center mainText">
                         {pageObj.description}
                     </div>
                 )}

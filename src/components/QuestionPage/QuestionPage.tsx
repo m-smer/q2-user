@@ -63,7 +63,7 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
             </div>
             <div className="grid lg:grid-cols-2 mt-[4px] grid-cols-1">
                 <div>
-                    <div className="text-[22px] mb-[20px] lg:mr-[10%] leading-[1.25] whitespace-pre-line">
+                    <div className="text-[22px] mb-[20px] lg:mr-[10%] leading-[1.25] whitespace-pre-line mainTitle">
                         {questionObj.title}
                     </div>
                     <Booklet questionObj={questionObj} />
