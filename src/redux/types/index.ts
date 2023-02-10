@@ -25,6 +25,7 @@ export type Quiz = {
     notice_emails: string;
     calltouch_mod_id?: string;
     calltouch_site_id?: string;
+    jivosite_id?: string;
     ym_id?: string;
     vk_id?: string;
     vk_ads_id?: string;

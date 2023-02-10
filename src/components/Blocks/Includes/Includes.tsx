@@ -7,6 +7,7 @@ import TargetMail from './Integrations/TargetMail';
 import GoogleAnalytics from './Integrations/GoogleAnalytics';
 import GoogleTagManager from './Integrations/GoogleTagManager';
 import VkAds from './Integrations/VkAds';
+import Jivosite from './Integrations/Jivosite';
 
 type Props = {
     quiz: Quiz;
@@ -44,6 +45,7 @@ const Includes: React.FC<Props> = ({quiz}) => {
             <TargetMail quiz={quiz} />
             <GoogleAnalytics quiz={quiz} />
             <GoogleTagManager quiz={quiz} />
+            <Jivosite quiz={quiz} />
         </>
     );
 };
