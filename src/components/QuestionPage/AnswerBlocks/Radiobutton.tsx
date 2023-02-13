@@ -1,7 +1,7 @@
 import React from 'react';
 import {Answer, Question} from '../../../redux/types';
 import {useForm} from 'react-hook-form';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 type Props = {
     questionObj: Question;
@@ -13,7 +13,9 @@ type Inputs = {
 };
 
 const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
-    const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
+    const page_opened_at = moment()
+        .tz('Europe/Moscow')
+        .format('YYYY-MM-DD HH:mm:ss');
     const {register, handleSubmit} = useForm<Inputs>({
         shouldUseNativeValidation: true,
     });
@@ -28,7 +30,9 @@ const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
                 answerOptionsIds: [ao.id],
                 points: ao.points,
                 page_opened_at: page_opened_at,
-                received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                received_at: moment()
+                    .tz('Europe/Moscow')
+                    .format('YYYY-MM-DD HH:mm:ss'),
             })
         );
     };

@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
 import {saveFormData, savePageData} from '../../redux/slices/sessionSlice';
 import QuizPage from '../QuizPage';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import {data} from 'autoprefixer';
 import SingleImage from '../Blocks/SingleImage';
 
@@ -14,7 +14,9 @@ type Props = {
 };
 
 const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
-    const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
+    const page_opened_at = moment()
+        .tz('Europe/Moscow')
+        .format('YYYY-MM-DD HH:mm:ss');
     const dispatch = useAppDispatch();
 
     if (!pageObj) return null;
@@ -25,7 +27,9 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
                 pageData: {
                     page_id: pageObj.id,
                     page_opened_at: page_opened_at,
-                    received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                    received_at: moment()
+                        .tz('Europe/Moscow')
+                        .format('YYYY-MM-DD HH:mm:ss'),
                 },
             }),
         );

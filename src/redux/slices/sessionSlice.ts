@@ -9,7 +9,7 @@ import {
     PageData,
 } from '../types';
 import {getNextPageInfo, pageDataById} from '../../utils';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 type SessionsState = {
     [key: string]: SessionState;
@@ -39,8 +39,12 @@ const slice = createSlice({
                     pages: {},
                     answers: {},
                     meta: {
-                        opened_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-                        last_action_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                        opened_at: moment()
+                            .tz('Europe/Moscow')
+                            .format('YYYY-MM-DD HH:mm:ss'),
+                        last_action_at: moment()
+                            .tz('Europe/Moscow')
+                            .format('YYYY-MM-DD HH:mm:ss'),
                         points: 0,
                         result_id: null,
                     },
@@ -71,9 +75,9 @@ const slice = createSlice({
             // @ts-ignore
             state[quiz.id].passingData.forms[formData.formId] = formData;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment().format(
-                'YYYY-MM-DD HH:mm:ss',
-            );
+            state[quiz.id].passingData.meta.last_action_at = moment()
+                .tz('Europe/Moscow')
+                .format('YYYY-MM-DD HH:mm:ss');
 
             const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
@@ -94,9 +98,9 @@ const slice = createSlice({
             // @ts-ignore
             state[quiz.id].passingData.pages[pageData.page_id] = pageData;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment().format(
-                'YYYY-MM-DD HH:mm:ss',
-            );
+            state[quiz.id].passingData.meta.last_action_at = moment()
+                .tz('Europe/Moscow')
+                .format('YYYY-MM-DD HH:mm:ss');
 
             const nextPage = getNextPageInfo(quiz, state[quiz.id]);
             if (nextPage) {
@@ -116,9 +120,9 @@ const slice = createSlice({
             //@ts-ignore
             state[quiz.id].passingData.answers[question.id] = answer;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment().format(
-                'YYYY-MM-DD HH:mm:ss',
-            );
+            state[quiz.id].passingData.meta.last_action_at = moment()
+                .tz('Europe/Moscow')
+                .format('YYYY-MM-DD HH:mm:ss');
             // @ts-ignore
             state[quiz.id].passingData.meta.points += answer.points;
 

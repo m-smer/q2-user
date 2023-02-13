@@ -7,7 +7,7 @@ import {
 } from '../../redux/types';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import Logotype from '../Blocks/Logotype';
 import InputMask from 'react-input-mask';
 import ErrorBlock from './ErrorBlock';
@@ -22,7 +22,9 @@ type Props = {
 };
 
 const FormPage: React.FC<Props> = ({quiz, formObj}) => {
-    const page_opened_at = moment().format('YYYY-MM-DD HH:mm:ss');
+    const page_opened_at = moment()
+        .tz('Europe/Moscow')
+        .format('YYYY-MM-DD HH:mm:ss');
     const [validate, result] = useValidateFormDataMutation();
     const {
         register,
@@ -61,7 +63,9 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                             },
                             formId: formObj.id,
                             page_opened_at: page_opened_at,
-                            received_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+                            received_at: moment()
+                                .tz('Europe/Moscow')
+                                .format('YYYY-MM-DD HH:mm:ss'),
                         },
                     }),
                 );
