@@ -63,7 +63,6 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
         return null;
     };
 
-    // console.log(session.passingData);
     return showAction();
 };
 

@@ -8,19 +8,11 @@ import {
     SessionState,
     PageData,
 } from '../types';
-import {getNextPageInfo, pageDataById} from '../../utils';
+import {getFilledUtms, getNextPageInfo, pageDataById} from '../../utils';
 import moment from 'moment-timezone';
 
 type SessionsState = {
     [key: string]: SessionState;
-};
-
-type UTMs = {
-    utm_source?: string | null;
-    utm_campaign?: string | null;
-    utm_term?: string | null;
-    utm_content?: string | null;
-    utm_medium?: string | null;
 };
 
 const slice = createSlice({
@@ -49,25 +41,12 @@ const slice = createSlice({
                         result_id: null,
                         landing_url: window.location.href,
                         http_referer: document.referrer ?? null,
+                        ...getFilledUtms(),
                     },
                 },
             };
         },
-        setUtms: (
-            state,
-            {payload: {quiz, utms}}: PayloadAction<{quiz: Quiz; utms: UTMs}>,
-        ) => {
-            // @ts-ignore
-            state[quiz.id].passingData.meta.utm_campaign = utms.utm_campaign;
-            // @ts-ignore
-            state[quiz.id].passingData.meta.utm_source = utms.utm_source;
-            // @ts-ignore
-            state[quiz.id].passingData.meta.utm_medium = utms.utm_medium;
-            // @ts-ignore
-            state[quiz.id].passingData.meta.utm_term = utms.utm_term;
-            // @ts-ignore
-            state[quiz.id].passingData.meta.utm_content = utms.utm_content;
-        },
+
         saveFormData: (
             state,
             {
@@ -76,6 +55,7 @@ const slice = createSlice({
         ) => {
             // @ts-ignore
             state[quiz.id].passingData.forms[formData.formId] = formData;
+            //@todo: убрать дублирование кода
             // @ts-ignore
             state[quiz.id].passingData.meta.last_action_at = moment()
                 .tz('Europe/Moscow')
@@ -140,13 +120,8 @@ const slice = createSlice({
     },
 });
 
-export const {
-    initSession,
-    saveFormData,
-    savePageData,
-    saveQuestionData,
-    setUtms,
-} = slice.actions;
+export const {initSession, saveFormData, savePageData, saveQuestionData} =
+    slice.actions;
 
 export const sessionReducer = slice.reducer;
 

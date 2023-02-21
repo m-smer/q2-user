@@ -68,6 +68,14 @@ export type PageData = {
     received_at: string;
 };
 
+export type UtmValues = {
+    utm_source?: string | null;
+    utm_campaign?: string | null;
+    utm_term?: string | null;
+    utm_content?: string | null;
+    utm_medium?: string | null;
+};
+
 export type PassingMetaData = {
     utm_source?: string | null;
     utm_campaign?: string | null;

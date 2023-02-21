@@ -5,7 +5,25 @@ import {
     PassingMetaData,
     Quiz,
     SessionState,
+    UtmValues,
 } from '../redux/types';
+
+export const getFilledUtms = (): UtmValues => {
+    const utms = [
+        'utm_source',
+        'utm_campaign',
+        'utm_term',
+        'utm_medium',
+        'utm_content',
+    ];
+    const utmsValues: any = [];
+    const params = new URLSearchParams(window.location.search);
+    utms.map(utm => {
+        const val = params.get(utm);
+        if (val !== null) utmsValues[utm] = val;
+    });
+    return utmsValues;
+};
 
 export const replaceMacrosToUtms = (
     url: string,
