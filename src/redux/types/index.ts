@@ -78,6 +78,8 @@ export type PassingMetaData = {
     last_action_at: string;
     points: number;
     result_id?: string | null;
+    landing_url?: string | null;
+    http_referer?: string | null;
 };
 
 export type PassingData = {

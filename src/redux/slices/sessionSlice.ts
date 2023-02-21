@@ -47,6 +47,8 @@ const slice = createSlice({
                             .format('YYYY-MM-DD HH:mm:ss'),
                         points: 0,
                         result_id: null,
+                        landing_url: window.location.href,
+                        http_referer: document.referrer ?? null,
                     },
                 },
             };
