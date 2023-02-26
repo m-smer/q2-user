@@ -8,17 +8,25 @@ import GoogleAnalytics from './Integrations/GoogleAnalytics';
 import GoogleTagManager from './Integrations/GoogleTagManager';
 import VkAds from './Integrations/VkAds';
 import Jivosite from './Integrations/Jivosite';
+import {useSession} from '../../../redux/hooks/useSession';
 
 type Props = {
     quiz: Quiz;
 };
 
 const Includes: React.FC<Props> = ({quiz}) => {
+    const session = useSession();
+
     useEffect(() => {
-        document.title = quiz.title;
         includeCssFile();
         includeFavicon();
     }, [quiz]);
+
+    useEffect(() => {
+        document.title = session?.actualPage?.obj?.title
+            ? session?.actualPage?.obj?.title + ' - ' + quiz.title
+            : quiz.title;
+    }, [session?.actualPage?.obj]);
 
     const includeFavicon = () => {
         if (!quiz.favicons[0]?.dataURL) return;

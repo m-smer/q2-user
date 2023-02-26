@@ -3,6 +3,9 @@ import {Question} from '../../redux/types';
 // import Swiper from 'swiper';
 // import 'swiper/css';
 
+import {LazyLoadImage} from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 type Props = {
     questionObj: Question;
 };
@@ -35,11 +38,21 @@ const Slider: React.FC<Props> = ({questionObj}) => {
                         {questionObj.images?.map((img, index) => (
                             <div className="swiper-slide" key={index}>
                                 <div className="relative w-full iframe-video-content-modal-show">
-                                    <img
-                                        src={img.dataURL}
-                                        alt=""
-                                        className="w-full h-full"
-                                    />
+                                    {index === 0 ? (
+                                        <img
+                                            src={img.dataURL}
+                                            alt=""
+                                            className="w-full h-full"
+                                        />
+                                    ) : (
+                                        <LazyLoadImage
+                                            src={img.dataURL}
+                                            alt=""
+                                            className="w-full h-full"
+                                            effect="blur"
+                                        />
+                                    )}
+
                                     {questionObj.video_url ? (
                                         <img
                                             src="/assets/images/Subtract.png"

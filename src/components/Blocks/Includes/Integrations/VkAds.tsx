@@ -17,7 +17,7 @@ const VkAds: React.FC<Props> = ({quiz}) => {
     }, [quiz]);
 
     useEffect(() => {
-        if (!quiz.tm_id) return;
+        if (!quiz.vk_ads_id) return;
 
         // @ts-ignore
         var _tmr = window._tmr || (window._tmr = []);

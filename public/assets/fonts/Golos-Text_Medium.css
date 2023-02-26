@@ -3,6 +3,7 @@
 
 
 @font-face {
+    font-display: swap;
 	font-family: 'GolosTextWebMedium';
 	src:
 		url('Golos-Text_Medium.woff2') format('woff2'),

@@ -3,6 +3,7 @@
 
 
 @font-face {
+    font-display: swap;
 	font-family: 'GolosTextWebDemiBold';
 	src:
 		url('Golos-Text_DemiBold.woff2') format('woff2'),

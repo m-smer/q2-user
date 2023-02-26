@@ -4,7 +4,7 @@
 .swiper {
     width: 100%;
     height: 100%;
-    padding-bottom: 40px!important;
+    /*padding-bottom: 40px!important;*/
 }
 .swiper-button-prev:after {
     margin-right: 3px;

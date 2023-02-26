@@ -34,11 +34,11 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
     return (
         <div className="m-auto px-[20px] section-1">
             <Logotype images={quiz.logotypes} />
-            <div className="mb-8">
+            <div className="mb-8 progress-bar">
                 <QuestionNumber quiz={quiz} />
                 <ProgressBar quiz={quiz} />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center prompt-line">
                 <div className="">
                     <svg
                         width="16"

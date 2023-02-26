@@ -11,7 +11,7 @@ const SingleImage: React.FC<Props> = ({images}) => {
 
     return (
         <div>
-            <img src={image.dataURL} className="w-full" alt="" />
+            <img src={image.dataURL} className="w-full rounded-md" alt="" />
         </div>
     );
 };

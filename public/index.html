@@ -23,12 +23,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <link rel="stylesheet" href="/assets/fonts/fonts.css" />
     <link
-        rel="stylesheet"
+        rel="preload"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+        href="/assets/fonts/fonts.css"
+    />
+    <link
+        rel="preload"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
         href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <title>Quizzica.ru</title>
   </head>
   <body>
