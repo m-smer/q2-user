@@ -34,7 +34,7 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
     return (
         <div className="m-auto px-[20px] section-1">
             <Logotype images={quiz.logotypes} />
-            <div className="mb-8 progress-bar">
+            <div className="mb-8 progress-bar-line">
                 <QuestionNumber quiz={quiz} />
                 <ProgressBar quiz={quiz} />
             </div>

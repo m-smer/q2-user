@@ -22,7 +22,7 @@ const GoogleAnalytics: React.FC<Props> = ({quiz}) => {
         ReactGA.pageview(window.location.pathname + window.location.search);
 
         console.log('GA: pageview');
-    }, [session?.actualPage?.obj, quiz.ga_id]);
+    }, [session?.actualPage?.obj?.id, quiz.ga_id]);
 
     const includeHeadScript = () => {
         if (!quiz.ga_id) return;

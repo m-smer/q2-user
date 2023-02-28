@@ -58,4 +58,4 @@ const Includes: React.FC<Props> = ({quiz}) => {
     );
 };
 
-export default Includes;
+export default React.memo(Includes);

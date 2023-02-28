@@ -28,7 +28,7 @@ const YandexMetrika: React.FC<Props> = ({quiz}) => {
         // @ts-ignore
         ym(quiz.ym_id, 'hit', document.location.href);
         console.log('Метрика: hit');
-    }, [session?.actualPage?.obj, quiz.ym_id]);
+    }, [session?.actualPage?.obj?.id, quiz.ym_id]);
 
     const includeHeadScript = () => {
         const script1 = document.createElement('script');
@@ -44,4 +44,4 @@ const YandexMetrika: React.FC<Props> = ({quiz}) => {
     return null;
 };
 
-export default YandexMetrika;
+export default React.memo(YandexMetrika);

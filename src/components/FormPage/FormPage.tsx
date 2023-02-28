@@ -85,7 +85,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
     return (
         <div className="m-auto px-[20px] section-6 pb-[30px]">
             <Logotype images={quiz.logotypes} />
-            <div className="mb-8">
+            <div className="mb-8 progress-bar-line">
                 <ProgressBar quiz={quiz} />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">

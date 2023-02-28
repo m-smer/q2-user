@@ -39,7 +39,7 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
     return (
         <div className="m-auto px-[20px] section-7 pb-[30px]">
             <Logotype images={quiz.logotypes} />
-            <div className="mb-8 progress-bar">
+            <div className="mb-8 progress-bar-line">
                 <ProgressBar quiz={quiz} />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">

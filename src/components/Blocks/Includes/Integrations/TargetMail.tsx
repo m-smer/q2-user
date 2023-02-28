@@ -29,7 +29,7 @@ const TargetMail: React.FC<Props> = ({quiz}) => {
         });
 
         console.log('ТМ: pageView');
-    }, [session?.actualPage?.obj, quiz.tm_id]);
+    }, [session?.actualPage?.obj?.id, quiz.tm_id]);
 
     const includeHeadScript = () => {
         const script1 = document.createElement('script');

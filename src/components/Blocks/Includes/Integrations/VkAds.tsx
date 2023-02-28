@@ -37,7 +37,7 @@ const VkAds: React.FC<Props> = ({quiz}) => {
         });
 
         console.log('VKAds: pageView');
-    }, [session?.actualPage?.obj, quiz.vk_ads_id]);
+    }, [session?.actualPage?.obj?.id, quiz.vk_ads_id]);
 
     const includeHeadScript = () => {
         if (quiz.vk_ads_id) {
