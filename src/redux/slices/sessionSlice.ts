@@ -1,4 +1,4 @@
-import {createSlice, nanoid, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, Draft, nanoid, PayloadAction} from '@reduxjs/toolkit';
 import {RootState, store} from '../store';
 import {
     FormData,
@@ -15,6 +15,25 @@ type SessionsState = {
     [key: string]: SessionState;
 };
 
+const updateSessionData = (quiz: Quiz, state: any) => {
+    // @ts-ignore
+    state[quiz.id].passingData.meta.last_action_at = moment()
+        .tz('Europe/Moscow')
+        .format('YYYY-MM-DD HH:mm:ss');
+
+    const nextPage = getNextPageInfo(quiz, state[quiz.id]);
+    if (nextPage) {
+        // @ts-ignore
+        state[quiz.id].actualPage = nextPage;
+        // @ts-ignore
+        state[quiz.id].passingData.meta.last_opened_page_id = nextPage.obj.id;
+        if (nextPage.type === 'result') {
+            // @ts-ignore
+            state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
+        }
+    }
+};
+
 const slice = createSlice({
     name: 'session',
     initialState: {} as SessionsState,
@@ -23,9 +42,10 @@ const slice = createSlice({
             state,
             {payload: {quiz}}: PayloadAction<{quiz: Quiz}>,
         ) => {
+            const actualPage = pageDataById(quiz, quiz.first_element_id);
             state[quiz.id] = {
                 id: nanoid(20),
-                actualPage: pageDataById(quiz, quiz.first_element_id),
+                actualPage: actualPage,
                 passingData: {
                     forms: {},
                     pages: {},
@@ -37,6 +57,7 @@ const slice = createSlice({
                         last_action_at: moment()
                             .tz('Europe/Moscow')
                             .format('YYYY-MM-DD HH:mm:ss'),
+                        last_opened_page_id: actualPage?.obj.id,
                         points: 0,
                         result_id: null,
                         landing_url: window.location.href,
@@ -55,20 +76,8 @@ const slice = createSlice({
         ) => {
             // @ts-ignore
             state[quiz.id].passingData.forms[formData.formId] = formData;
-            //@todo: убрать дублирование кода
-            // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment()
-                .tz('Europe/Moscow')
-                .format('YYYY-MM-DD HH:mm:ss');
 
-            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
-            if (nextPage) {
-                state[quiz.id].actualPage = nextPage;
-                if (nextPage.type === 'result') {
-                    // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
-                }
-            }
+            updateSessionData(quiz, state);
         },
         savePageData: (
             state,
@@ -79,19 +88,7 @@ const slice = createSlice({
             console.log(pageData);
             // @ts-ignore
             state[quiz.id].passingData.pages[pageData.page_id] = pageData;
-            // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment()
-                .tz('Europe/Moscow')
-                .format('YYYY-MM-DD HH:mm:ss');
-
-            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
-            if (nextPage) {
-                state[quiz.id].actualPage = nextPage;
-                if (nextPage.type === 'result') {
-                    // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
-                }
-            }
+            updateSessionData(quiz, state);
         },
         saveQuestionData: (
             state,
@@ -102,20 +99,9 @@ const slice = createSlice({
             //@ts-ignore
             state[quiz.id].passingData.answers[question.id] = answer;
             // @ts-ignore
-            state[quiz.id].passingData.meta.last_action_at = moment()
-                .tz('Europe/Moscow')
-                .format('YYYY-MM-DD HH:mm:ss');
-            // @ts-ignore
             state[quiz.id].passingData.meta.points += answer.points;
 
-            const nextPage = getNextPageInfo(quiz, state[quiz.id]);
-            if (nextPage) {
-                state[quiz.id].actualPage = nextPage;
-                if (nextPage.type === 'result') {
-                    // @ts-ignore
-                    state[quiz.id].passingData.meta.result_id = nextPage.obj.id;
-                }
-            }
+            updateSessionData(quiz, state);
         },
     },
 });

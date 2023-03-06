@@ -84,6 +84,7 @@ export type PassingMetaData = {
     utm_medium?: string | null;
     opened_at: string;
     last_action_at: string;
+    last_opened_page_id?: string;
     points: number;
     result_id?: string | null;
     landing_url?: string | null;

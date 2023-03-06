@@ -13,7 +13,6 @@ let persistor = persistStore(store);
 
 const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
-App.whyDidYouRender = true;
 
 root.render(
     <BrowserRouter>

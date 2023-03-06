@@ -52,7 +52,7 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
             <button
                 onClick={onSubmit}
                 className="bg-[#1A3661] text-white sm:px-36 py-5 w-full sm:w-auto text-sm rounded-md custom-btn-1">
-                {pageObj.button_text !== '' ? pageObj.button_text : 'Далее'}
+                {pageObj.button_text ? pageObj.button_text : 'Далее'}
             </button>
         </div>
     );
