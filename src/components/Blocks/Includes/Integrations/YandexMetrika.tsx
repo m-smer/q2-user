@@ -8,25 +8,37 @@ type Props = {
 
 const YandexMetrika: React.FC<Props> = ({quiz}) => {
     const session = useSession();
+    const globalYMId = Number(process.env.REACT_APP_YMETRICA_GLOBAL_ID);
 
     useEffect(() => {
-        if (!quiz.ym_id) return;
         includeHeadScript();
 
+        // Подключение глобального счетчика метрики
         // @ts-ignore
-        ym(quiz.ym_id, 'init', {
+        ym(globalYMId, 'init', {
             clickmap: true,
             trackLinks: true,
             accurateTrackBounce: true,
         });
+
+        if (!quiz.ym_id) {
+            // @ts-ignore
+            ym(quiz.ym_id, 'init', {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+            });
+        }
         console.log('Метрика: init');
     }, [quiz]);
 
     useEffect(() => {
-        if (!quiz.ym_id) return;
-
         // @ts-ignore
-        ym(quiz.ym_id, 'hit', document.location.href);
+        ym(globalYMId, 'hit', document.location.href);
+        if (!quiz.ym_id) {
+            // @ts-ignore
+            ym(quiz.ym_id, 'hit', document.location.href);
+        }
         console.log('Метрика: hit');
     }, [session?.actualPage?.obj?.id, quiz.ym_id]);
 

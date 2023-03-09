@@ -1,28 +1,18 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../../redux/types';
-import ReactGA from 'react-ga';
-import {useSession} from '../../../../redux/hooks/useSession';
+import ReactGA from 'react-ga4';
 
 type Props = {
     quiz: Quiz;
 };
 
 const GoogleAnalytics: React.FC<Props> = ({quiz}) => {
-    const session = useSession();
-
     useEffect(() => {
         if (!quiz.ga_id) return;
         includeHeadScript();
 
         console.log('GA: include');
     }, [quiz]);
-
-    useEffect(() => {
-        if (!quiz.ga_id) return;
-        ReactGA.pageview(window.location.pathname + window.location.search);
-
-        console.log('GA: pageview');
-    }, [session?.actualPage?.obj?.id, quiz.ga_id]);
 
     const includeHeadScript = () => {
         if (!quiz.ga_id) return;
