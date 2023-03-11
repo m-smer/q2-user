@@ -1461,6 +1461,13 @@
   dependencies:
     "@sinclair/typebox" "^0.23.3"
 
+"@jest/schemas@^29.4.3":
+  version "29.4.3"
+  resolved "https://registry.yarnpkg.com/@jest/schemas/-/schemas-29.4.3.tgz#39cf1b8469afc40b6f5a2baaa146e332c4151788"
+  integrity sha512-VLYKXQmtmuEz6IxJsrZwzG9NvtkQsWNnWMsKxqWNu3+CnfzJQhp0WDDKWLVV9hLKr0l3SLLFRqcYHjhtyuDVxg==
+  dependencies:
+    "@sinclair/typebox" "^0.25.16"
+
 "@jest/source-map@^27.5.1":
   version "27.5.1"
   resolved "https://registry.npmjs.org/@jest/source-map/-/source-map-27.5.1.tgz"
@@ -1544,6 +1551,18 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
+"@jest/types@^29.5.0":
+  version "29.5.0"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-29.5.0.tgz#f59ef9b031ced83047c67032700d8c807d6e1593"
+  integrity sha512-qbu7kN6czmVRc3xWFQcAN03RAUamgppVUdXrvl1Wr3jlNF93o9mJbGcDWrwGB6ht44u7efB1qCFgVQmca24Uog==
+  dependencies:
+    "@jest/schemas" "^29.4.3"
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^3.0.0"
+    "@types/node" "*"
+    "@types/yargs" "^17.0.8"
+    chalk "^4.0.0"
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz"
@@ -1560,6 +1579,11 @@
     "@jridgewell/set-array" "^1.0.1"
     "@jridgewell/sourcemap-codec" "^1.4.10"
     "@jridgewell/trace-mapping" "^0.3.9"
+
+"@jridgewell/resolve-uri@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz#2203b118c157721addfe69d47b70465463066d78"
+  integrity sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==
 
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.0.8"
@@ -1579,7 +1603,7 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@jridgewell/sourcemap-codec@^1.4.10":
+"@jridgewell/sourcemap-codec@1.4.14", "@jridgewell/sourcemap-codec@^1.4.10":
   version "1.4.14"
   resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz"
   integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
@@ -1591,6 +1615,14 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
+
+"@jridgewell/trace-mapping@^0.3.17":
+  version "0.3.17"
+  resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.17.tgz#793041277af9073b0951a7fe0f0d8c4c98c36985"
+  integrity sha512-MCNzAp77qzKca9+W/+I0+sEpaUnZoeasnghNeVc41VZCEKaCH73Vq3BZZ/SzWIgrqE4H4ceI+p+b6C0mHf9T4g==
+  dependencies:
+    "@jridgewell/resolve-uri" "3.1.0"
+    "@jridgewell/sourcemap-codec" "1.4.14"
 
 "@jridgewell/trace-mapping@^0.3.7", "@jridgewell/trace-mapping@^0.3.9":
   version "0.3.14"
@@ -1793,6 +1825,11 @@
   version "0.23.5"
   resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.23.5.tgz"
   integrity sha512-AFBVi/iT4g20DHoujvMH1aEDn8fGJh4xsRGCP6d8RpLPMqsNPvW01Jcn0QysXTsg++/xj25NmJsGyH9xug/wKg==
+
+"@sinclair/typebox@^0.25.16":
+  version "0.25.24"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"
+  integrity sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -2238,13 +2275,6 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-beforeunload@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/react-beforeunload/-/react-beforeunload-2.1.1.tgz#ee77c0843a588c13df4a5a4eebe48b23b361e1d5"
-  integrity sha512-KER+M11lrXhp++tHDm9P7YWaKKBWwNyZkwnHSV3QQXGU2ZcP9x+O0Y7ZDZqGQD1OlGF4P8fmcpll3ol3a8KXsQ==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@^18.0.0":
   version "18.0.5"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.5.tgz"
@@ -2266,14 +2296,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-lazy-load-image-component@^1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@types/react-lazy-load-image-component/-/react-lazy-load-image-component-1.5.2.tgz#b87e814b6b91853b802f04465364ff1e913dce6a"
-  integrity sha512-4NLJsMJVrMv18FuMIkUUBVj/PH9A+BvLKrZC75EWiEFn1IsMrZHgL1tVKw5QBfoa0Qjz6SkWIzEvwcyZ8PgnIg==
-  dependencies:
-    "@types/react" "*"
-    csstype "^3.0.2"
-
 "@types/react-transition-group@^4.4.4":
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
@@ -2289,13 +2311,6 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
-
-"@types/redux-persist@^4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@types/redux-persist/-/redux-persist-4.3.1.tgz#aa4c876859e0bea5155e5f7980e5b8c4699dc2e6"
-  integrity sha512-YkMnMUk+4//wPtiSTMfsxST/F9Gh9sPWX0LVxHuOidGjojHtMdpep2cYvQgfiDMnj34orXyZI+QJCQMZDlafKA==
-  dependencies:
-    redux-persist "*"
 
 "@types/resolve@1.17.1":
   version "1.17.1"
@@ -3674,6 +3689,11 @@ css-declaration-sorter@^6.3.0:
   resolved "https://registry.npmjs.org/css-declaration-sorter/-/css-declaration-sorter-6.3.0.tgz"
   integrity sha512-OGT677UGHJTAVMRhPO+HJ4oKln3wkBTwtDFH0ojbqm+MJm6xuDMHp2nkhh/ThaBqq20IbraBQSWKfSLNHQO9Og==
 
+css-declaration-sorter@^6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/css-declaration-sorter/-/css-declaration-sorter-6.3.1.tgz#be5e1d71b7a992433fb1c542c7a1b835e45682ec"
+  integrity sha512-fBffmak0bPAnyqc/HO8C3n2sHrp9wcqQz6ES9koRF2/mLOVAx9zIQ3Y7R29sYCteTPqMCwns4WYQoCX91Xl3+w==
+
 css-has-pseudo@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/css-has-pseudo/-/css-has-pseudo-3.0.4.tgz"
@@ -3703,6 +3723,18 @@ css-minimizer-webpack-plugin@^3.2.0:
     cssnano "^5.0.6"
     jest-worker "^27.0.2"
     postcss "^8.3.5"
+    schema-utils "^4.0.0"
+    serialize-javascript "^6.0.0"
+    source-map "^0.6.1"
+
+css-minimizer-webpack-plugin@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-4.2.2.tgz#79f6199eb5adf1ff7ba57f105e3752d15211eb35"
+  integrity sha512-s3Of/4jKfw1Hj9CxEO1E5oXhQAxlayuHO2y/ML+C6I9sQ7FdzfEV6QgMLN3vI+qFsjJGIAFLKtQK7t8BOXAIyA==
+  dependencies:
+    cssnano "^5.1.8"
+    jest-worker "^29.1.2"
+    postcss "^8.4.17"
     schema-utils "^4.0.0"
     serialize-javascript "^6.0.0"
     source-map "^0.6.1"
@@ -3823,6 +3855,41 @@ cssnano-preset-default@^5.2.12:
     postcss-svgo "^5.1.0"
     postcss-unique-selectors "^5.1.1"
 
+cssnano-preset-default@^5.2.14:
+  version "5.2.14"
+  resolved "https://registry.yarnpkg.com/cssnano-preset-default/-/cssnano-preset-default-5.2.14.tgz#309def4f7b7e16d71ab2438052093330d9ab45d8"
+  integrity sha512-t0SFesj/ZV2OTylqQVOrFgEh5uanxbO6ZAdeCrNsUQ6fVuXwYTxJPNAGvGTxHbD68ldIJNec7PyYZDBrfDQ+6A==
+  dependencies:
+    css-declaration-sorter "^6.3.1"
+    cssnano-utils "^3.1.0"
+    postcss-calc "^8.2.3"
+    postcss-colormin "^5.3.1"
+    postcss-convert-values "^5.1.3"
+    postcss-discard-comments "^5.1.2"
+    postcss-discard-duplicates "^5.1.0"
+    postcss-discard-empty "^5.1.1"
+    postcss-discard-overridden "^5.1.0"
+    postcss-merge-longhand "^5.1.7"
+    postcss-merge-rules "^5.1.4"
+    postcss-minify-font-values "^5.1.0"
+    postcss-minify-gradients "^5.1.1"
+    postcss-minify-params "^5.1.4"
+    postcss-minify-selectors "^5.2.1"
+    postcss-normalize-charset "^5.1.0"
+    postcss-normalize-display-values "^5.1.0"
+    postcss-normalize-positions "^5.1.1"
+    postcss-normalize-repeat-style "^5.1.1"
+    postcss-normalize-string "^5.1.0"
+    postcss-normalize-timing-functions "^5.1.0"
+    postcss-normalize-unicode "^5.1.1"
+    postcss-normalize-url "^5.1.0"
+    postcss-normalize-whitespace "^5.1.1"
+    postcss-ordered-values "^5.1.3"
+    postcss-reduce-initial "^5.1.2"
+    postcss-reduce-transforms "^5.1.0"
+    postcss-svgo "^5.1.0"
+    postcss-unique-selectors "^5.1.1"
+
 cssnano-utils@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/cssnano-utils/-/cssnano-utils-3.1.0.tgz"
@@ -3834,6 +3901,15 @@ cssnano@^5.0.6:
   integrity sha512-TgvArbEZu0lk/dvg2ja+B7kYoD7BBCmn3+k58xD0qjrGHsFzXY/wKTo9M5egcUCabPol05e/PVoIu79s2JN4WQ==
   dependencies:
     cssnano-preset-default "^5.2.12"
+    lilconfig "^2.0.3"
+    yaml "^1.10.2"
+
+cssnano@^5.1.8:
+  version "5.1.15"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-5.1.15.tgz#ded66b5480d5127fcb44dac12ea5a983755136bf"
+  integrity sha512-j+BKgDcLDQA+eDifLx0EO4XSA56b7uut3BQFH+wbSaSTuGLuiyTa/wbRYthUXX8LC9mLg+WWKe8h+qJuwTAbHw==
+  dependencies:
+    cssnano-preset-default "^5.2.14"
     lilconfig "^2.0.3"
     yaml "^1.10.2"
 
@@ -6079,6 +6155,18 @@ jest-util@^28.1.1:
     graceful-fs "^4.2.9"
     picomatch "^2.2.3"
 
+jest-util@^29.5.0:
+  version "29.5.0"
+  resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-29.5.0.tgz#24a4d3d92fc39ce90425311b23c27a6e0ef16b8f"
+  integrity sha512-RYMgG/MTadOr5t8KdhejfvUU82MxsCu5MF6KuDUHl+NuwzUt+Sm6jJWxTJVrDR1j5M/gJVCPKQEpWXY+yIQ6lQ==
+  dependencies:
+    "@jest/types" "^29.5.0"
+    "@types/node" "*"
+    chalk "^4.0.0"
+    ci-info "^3.2.0"
+    graceful-fs "^4.2.9"
+    picomatch "^2.2.3"
+
 jest-validate@^27.5.1:
   version "27.5.1"
   resolved "https://registry.npmjs.org/jest-validate/-/jest-validate-27.5.1.tgz"
@@ -6155,6 +6243,16 @@ jest-worker@^28.0.2:
   integrity sha512-Au7slXB08C6h+xbJPp7VIb6U0XX5Kc9uel/WFc6/rcTzGiaVCBRngBExSYuXSLFPULPSYU3cJ3ybS988lNFQhQ==
   dependencies:
     "@types/node" "*"
+    merge-stream "^2.0.0"
+    supports-color "^8.0.0"
+
+jest-worker@^29.1.2:
+  version "29.5.0"
+  resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-29.5.0.tgz#bdaefb06811bd3384d93f009755014d8acb4615d"
+  integrity sha512-NcrQnevGoSp4b5kg+akIpthoAFHxPBcb5P6mYPY0fUNT+sSvmtu6jlkEle3anczUKIKEbMxFimk9oTP/tpIPgA==
+  dependencies:
+    "@types/node" "*"
+    jest-util "^29.5.0"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
@@ -6420,11 +6518,6 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.npmjs.org/lodash.sortby/-/lodash.sortby-4.7.0.tgz"
   integrity sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==
-
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -7153,12 +7246,30 @@ postcss-colormin@^5.3.0:
     colord "^2.9.1"
     postcss-value-parser "^4.2.0"
 
+postcss-colormin@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/postcss-colormin/-/postcss-colormin-5.3.1.tgz#86c27c26ed6ba00d96c79e08f3ffb418d1d1988f"
+  integrity sha512-UsWQG0AqTFQmpBegeLLc1+c3jIqBNB0zlDGRWR+dQ3pRKJL1oeMzyqmH3o2PIfn9MBdNrVPWhDbT769LxCTLJQ==
+  dependencies:
+    browserslist "^4.21.4"
+    caniuse-api "^3.0.0"
+    colord "^2.9.1"
+    postcss-value-parser "^4.2.0"
+
 postcss-convert-values@^5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/postcss-convert-values/-/postcss-convert-values-5.1.2.tgz"
   integrity sha512-c6Hzc4GAv95B7suy4udszX9Zy4ETyMCgFPUDtWjdFTKH1SE9eFY/jEpHSwTH1QPuwxHpWslhckUQWbNRM4ho5g==
   dependencies:
     browserslist "^4.20.3"
+    postcss-value-parser "^4.2.0"
+
+postcss-convert-values@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/postcss-convert-values/-/postcss-convert-values-5.1.3.tgz#04998bb9ba6b65aa31035d669a6af342c5f9d393"
+  integrity sha512-82pC1xkJZtcJEfiLw6UXnXVXScgtBrjlO5CBmuDQc+dlb88ZYheFsjTn40+zBVi3DkfF7iezO0nJUPLcJK3pvA==
+  dependencies:
+    browserslist "^4.21.4"
     postcss-value-parser "^4.2.0"
 
 postcss-custom-media@^8.0.2:
@@ -7324,12 +7435,30 @@ postcss-merge-longhand@^5.1.6:
     postcss-value-parser "^4.2.0"
     stylehacks "^5.1.0"
 
+postcss-merge-longhand@^5.1.7:
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/postcss-merge-longhand/-/postcss-merge-longhand-5.1.7.tgz#24a1bdf402d9ef0e70f568f39bdc0344d568fb16"
+  integrity sha512-YCI9gZB+PLNskrK0BB3/2OzPnGhPkBEwmwhfYk1ilBHYVAZB7/tkTHFBAnCrvBBOmeYyMYw3DMjT55SyxMBzjQ==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+    stylehacks "^5.1.1"
+
 postcss-merge-rules@^5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-5.1.2.tgz"
   integrity sha512-zKMUlnw+zYCWoPN6yhPjtcEdlJaMUZ0WyVcxTAmw3lkkN/NDMRkOkiuctQEoWAOvH7twaxUUdvBWl0d4+hifRQ==
   dependencies:
     browserslist "^4.16.6"
+    caniuse-api "^3.0.0"
+    cssnano-utils "^3.1.0"
+    postcss-selector-parser "^6.0.5"
+
+postcss-merge-rules@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/postcss-merge-rules/-/postcss-merge-rules-5.1.4.tgz#2f26fa5cacb75b1402e213789f6766ae5e40313c"
+  integrity sha512-0R2IuYpgU93y9lhVbO/OylTtKMVcHb67zjWIfCiKR9rWL3GUk1677LAqD/BcHizukdZEjT8Ru3oHRoAYoJy44g==
+  dependencies:
+    browserslist "^4.21.4"
     caniuse-api "^3.0.0"
     cssnano-utils "^3.1.0"
     postcss-selector-parser "^6.0.5"
@@ -7356,6 +7485,15 @@ postcss-minify-params@^5.1.3:
   integrity sha512-bkzpWcjykkqIujNL+EVEPOlLYi/eZ050oImVtHU7b4lFS82jPnsCb44gvC6pxaNt38Els3jWYDHTjHKf0koTgg==
   dependencies:
     browserslist "^4.16.6"
+    cssnano-utils "^3.1.0"
+    postcss-value-parser "^4.2.0"
+
+postcss-minify-params@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/postcss-minify-params/-/postcss-minify-params-5.1.4.tgz#c06a6c787128b3208b38c9364cfc40c8aa5d7352"
+  integrity sha512-+mePA3MgdmVmv6g+30rn57USjOGSAyuxUmkfiWpzalZ8aiBkdPYjXWtHuwJGm1v5Ojy0Z0LaSYhHaLJQB0P8Jw==
+  dependencies:
+    browserslist "^4.21.4"
     cssnano-utils "^3.1.0"
     postcss-value-parser "^4.2.0"
 
@@ -7462,6 +7600,14 @@ postcss-normalize-unicode@^5.1.0:
   integrity sha512-J6M3MizAAZ2dOdSjy2caayJLQT8E8K9XjLce8AUQMwOrCvjCHv24aLC/Lps1R1ylOfol5VIDMaM/Lo9NGlk1SQ==
   dependencies:
     browserslist "^4.16.6"
+    postcss-value-parser "^4.2.0"
+
+postcss-normalize-unicode@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-normalize-unicode/-/postcss-normalize-unicode-5.1.1.tgz#f67297fca3fea7f17e0d2caa40769afc487aa030"
+  integrity sha512-qnCL5jzkNUmKVhZoENp1mJiGNPcsJCs1aaRmURmeJGES23Z/ajaln+EPTD+rBeNkSryI+2WTdW+lwcVdOikrpA==
+  dependencies:
+    browserslist "^4.21.4"
     postcss-value-parser "^4.2.0"
 
 postcss-normalize-url@^5.1.0:
@@ -7584,6 +7730,14 @@ postcss-reduce-initial@^5.1.0:
   integrity sha512-5OgTUviz0aeH6MtBjHfbr57tml13PuedK/Ecg8szzd4XRMbYxH4572JFG067z+FqBIf6Zp/d+0581glkvvWMFw==
   dependencies:
     browserslist "^4.16.6"
+    caniuse-api "^3.0.0"
+
+postcss-reduce-initial@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/postcss-reduce-initial/-/postcss-reduce-initial-5.1.2.tgz#798cd77b3e033eae7105c18c9d371d989e1382d6"
+  integrity sha512-dE/y2XRaqAi6OvjzD22pjTUQ8eOfc6m/natGHgKFBK9DxFmIm69YmaRVQrGgFlEfc1HePIurY0TmDeROK05rIg==
+  dependencies:
+    browserslist "^4.21.4"
     caniuse-api "^3.0.0"
 
 postcss-reduce-transforms@^5.1.0:
@@ -7844,14 +7998,6 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-beforeunload@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/react-beforeunload/-/react-beforeunload-2.5.3.tgz#6328296cc56456d4f4543cf22f9f528ad1061f68"
-  integrity sha512-roOH5Qja6DGwydKYDMdzw3LR/mX6CCaglGqOb/1W9VREVBDp+DlOlC+aXKru5K7aH+vxdviBpfgyX3lTutOulg==
-  dependencies:
-    prop-types "^15.8.1"
-    tiny-invariant "^1.2.0"
-
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -7940,14 +8086,6 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
-
-react-lazy-load-image-component@^1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.5.6.tgz#a4b84257be21b1825680b4e158d167c08aeda5ff"
-  integrity sha512-M0jeJtOlTHgThOfgYM9krSqYbR6ShxROy/KVankwbw9/amPKG1t5GSGN1sei6Cyu8+QJVuyAUvQ+LFtCVTTlKw==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
 
 react-loader-spinner@^5.1.5:
   version "5.1.5"
@@ -8109,7 +8247,7 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
-redux-persist@*, redux-persist@^6.0.0:
+redux-persist@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
   integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
@@ -8481,6 +8619,13 @@ serialize-javascript@^6.0.0:
   dependencies:
     randombytes "^2.1.0"
 
+serialize-javascript@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-6.0.1.tgz#b206efb27c3da0b0ab6b52f48d170b7996458e5c"
+  integrity sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==
+  dependencies:
+    randombytes "^2.1.0"
+
 serve-index@^1.9.1:
   version "1.9.1"
   resolved "https://registry.npmjs.org/serve-index/-/serve-index-1.9.1.tgz"
@@ -8849,6 +8994,14 @@ stylehacks@^5.1.0:
     browserslist "^4.16.6"
     postcss-selector-parser "^6.0.4"
 
+stylehacks@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-5.1.1.tgz#7934a34eb59d7152149fa69d6e9e56f2fc34bcc9"
+  integrity sha512-sBpcd5Hx7G6seo7b1LkpttvTz7ikD0LlH5RmdcBNb6fFR0Fl7LQwHDFr300q4cwUqi+IYrFGmsIHieMBfnN/Bw==
+  dependencies:
+    browserslist "^4.21.4"
+    postcss-selector-parser "^6.0.4"
+
 stylis@4.0.13:
   version "4.0.13"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.13.tgz#f5db332e376d13cc84ecfe5dace9a2a51d954c91"
@@ -9042,10 +9195,31 @@ terser-webpack-plugin@^5.1.3, terser-webpack-plugin@^5.2.5:
     serialize-javascript "^6.0.0"
     terser "^5.7.2"
 
+terser-webpack-plugin@^5.3.7:
+  version "5.3.7"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.7.tgz#ef760632d24991760f339fe9290deb936ad1ffc7"
+  integrity sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==
+  dependencies:
+    "@jridgewell/trace-mapping" "^0.3.17"
+    jest-worker "^27.4.5"
+    schema-utils "^3.1.1"
+    serialize-javascript "^6.0.1"
+    terser "^5.16.5"
+
 terser@^5.0.0, terser@^5.10.0, terser@^5.7.2:
   version "5.14.1"
   resolved "https://registry.npmjs.org/terser/-/terser-5.14.1.tgz"
   integrity sha512-+ahUAE+iheqBTDxXhTisdA8hgvbEG1hHOQ9xmNjeUJSoi6DU/gMrKNcfZjHkyY6Alnuyc+ikYJaxxfHkT3+WuQ==
+  dependencies:
+    "@jridgewell/source-map" "^0.3.2"
+    acorn "^8.5.0"
+    commander "^2.20.0"
+    source-map-support "~0.5.20"
+
+terser@^5.16.5:
+  version "5.16.6"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.6.tgz#f6c7a14a378ee0630fbe3ac8d1f41b4681109533"
+  integrity sha512-IBZ+ZQIA9sMaXmRZCUMDjNH0D5AQQfdn4WUjHL0+1lF4TP1IHRJbrhb6fNaXWikrYQTSkb7SLxkeXAiy1p7mbg==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
@@ -9075,11 +9249,6 @@ thunky@^1.0.2:
   version "1.1.0"
   resolved "https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
-
-tiny-invariant@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
-  integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
 
 tmpl@1.0.5:
   version "1.0.5"

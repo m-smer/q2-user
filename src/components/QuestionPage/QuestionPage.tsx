@@ -1,6 +1,5 @@
 import React from 'react';
 import {Answer, Question, Quiz} from '../../redux/types';
-import {useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
 import {saveQuestionData} from '../../redux/slices/sessionSlice';
 import Radiobutton from './AnswerBlocks/Radiobutton';
@@ -96,4 +95,5 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
     );
 };
 
-export default QuestionPage;
+QuestionPage.whyDidYouRender = true;
+export default React.memo(QuestionPage);

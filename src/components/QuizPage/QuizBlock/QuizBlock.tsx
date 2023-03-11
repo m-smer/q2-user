@@ -42,15 +42,9 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
                 const page = session.actualPage?.obj as Page;
 
                 return page.is_modal ? (
-                    <ModalPage
-                        quiz={quizObj}
-                        pageObj={session.actualPage?.obj as Page}
-                    />
+                    <ModalPage quiz={quizObj} pageObj={page} />
                 ) : (
-                    <PagePage
-                        quiz={quizObj}
-                        pageObj={session.actualPage?.obj as Page}
-                    />
+                    <PagePage quiz={quizObj} pageObj={page} />
                 );
             case 'result':
                 return (
@@ -62,7 +56,6 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
         }
         return null;
     };
-
     return showAction();
 };
 

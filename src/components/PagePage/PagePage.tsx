@@ -1,11 +1,8 @@
 import React from 'react';
-import {Form, Page, Quiz} from '../../redux/types';
-import {useForm} from 'react-hook-form';
+import {Page, Quiz} from '../../redux/types';
 import {useAppDispatch} from '../../redux/hooks';
-import {saveFormData, savePageData} from '../../redux/slices/sessionSlice';
-import QuizPage from '../QuizPage';
+import {savePageData} from '../../redux/slices/sessionSlice';
 import moment from 'moment-timezone';
-import {data} from 'autoprefixer';
 import Logotype from '../Blocks/Logotype';
 import BookletImages from '../Blocks/BookletImages';
 

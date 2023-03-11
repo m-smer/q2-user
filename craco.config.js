@@ -1,3 +1,6 @@
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
     babel: {
         loaderOptions: babelLoaderOptions => {
@@ -44,5 +47,17 @@ module.exports = {
                     ? 'react-redux/lib'
                     : 'react-redux',
         },
+        // plugins: {
+        //     add: [
+        //         new CssMinimizerPlugin(),
+        //         new TerserPlugin({
+        //             terserOptions: {
+        //                 compress: {
+        //                     drop_console: true, // remove console statement
+        //                 },
+        //             },
+        //         }),
+        //     ],
+        // },
     },
 };
