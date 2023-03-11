@@ -13,8 +13,8 @@ import InputMask from 'react-input-mask';
 import ErrorBlock from './ErrorBlock';
 import {saveFormData} from '../../redux/slices/sessionSlice';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
-import SingleImage from '../Blocks/SingleImage';
 import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
+import BookletImages from '../Blocks/BookletImages';
 
 type Props = {
     quiz: Quiz;
@@ -93,7 +93,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                     <h3 className="text-[22px] mb-[30px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line mainTitle">
                         {formObj.title}
                     </h3>
-                    <SingleImage images={formObj.images} />
+                    <BookletImages images={formObj.images} />
                     <p className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText">
                         {formObj.description}
                     </p>

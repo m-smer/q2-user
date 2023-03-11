@@ -1,6 +1,6 @@
 import React from 'react';
 import {Question} from '../../redux/types';
-import Slider from './Slider';
+import BookletImages from '../Blocks/BookletImages';
 
 type Props = {
     questionObj: Question;
@@ -9,7 +9,12 @@ type Props = {
 const Booklet: React.FC<Props> = ({questionObj}) => {
     return (
         <>
-            <Slider questionObj={questionObj} />
+            <div className="lg:pr-[10%]">
+                <BookletImages
+                    images={questionObj.images}
+                    video_url={questionObj.video_url}
+                />
+            </div>
 
             {questionObj.subtitle || questionObj.description ? (
                 <div className="px-[20px] mb-[10px] pb-[40px] lg:mr-[10%] bg-[#F8F8F8] rounded-b-md question-description">

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {Quiz, Result} from '../../redux/types';
-import SingleImage from '../Blocks/SingleImage';
 import Logotype from '../Blocks/Logotype';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 import {replaceMacrosToUtms} from '../../utils';
@@ -8,6 +7,7 @@ import {useSession} from '../../redux/hooks/useSession';
 import {initSession} from '../../redux/slices/sessionSlice';
 import {useAppDispatch} from '../../redux/hooks';
 import {useNavigate} from 'react-router-dom';
+import BookletImages from '../Blocks/BookletImages';
 
 type Props = {
     quiz: Quiz;
@@ -49,7 +49,7 @@ const ResultPage: React.FC<Props> = ({quiz, resultObj}) => {
                     </h3>
                 </div>
                 <div className="lg:pl-[30px]">
-                    <SingleImage images={resultObj.images} />
+                    <BookletImages images={resultObj.images} />
 
                     <div className="p-[20px]">
                         <h3 className="text-xl">{resultObj.subtitle}</h3>

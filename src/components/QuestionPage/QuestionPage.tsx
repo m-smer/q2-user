@@ -7,7 +7,6 @@ import Radiobutton from './AnswerBlocks/Radiobutton';
 import Checkbox from './AnswerBlocks/Checkbox';
 import Textarea from './AnswerBlocks/Textarea';
 import Prompt from './Prompt';
-import Slider from './Slider';
 import Logotype from '../Blocks/Logotype';
 import Booklet from './Booklet';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';

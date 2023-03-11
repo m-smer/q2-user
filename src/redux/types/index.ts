@@ -110,6 +110,7 @@ export type Image = {
     id?: string;
     dataURL?: string;
     type?: string | null;
+    hasWebpCopy?: boolean;
 };
 
 export type Question = {

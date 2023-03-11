@@ -15,7 +15,7 @@ export const quizApi = createApi({
     }),
     endpoints: builder => ({
         getQuiz: builder.query<Quiz, QuizIdArr>({
-            query: quizIdArr => `quiz/get?url_id=${quizIdArr.url_id ?? ''}&domain=${quizIdArr.domain}`,
+            query: quizIdArr => `quiz/get?url_id=${quizIdArr.url_id ?? ''}&domain=${quizIdArr.domain}&debug=1`,
             // async onCacheEntryAdded(arg, {cacheDataLoaded, updateCachedData}) {
             //     await cacheDataLoaded;
             //     console.log(123);

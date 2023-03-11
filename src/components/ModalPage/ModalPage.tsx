@@ -1,12 +1,9 @@
 import React from 'react';
-import {Form, Page, Quiz} from '../../redux/types';
-import {useForm} from 'react-hook-form';
+import {Page, Quiz} from '../../redux/types';
 import {useAppDispatch} from '../../redux/hooks';
-import {saveFormData, savePageData} from '../../redux/slices/sessionSlice';
-import QuizPage from '../QuizPage';
+import {savePageData} from '../../redux/slices/sessionSlice';
 import moment from 'moment-timezone';
-import {data} from 'autoprefixer';
-import SingleImage from '../Blocks/SingleImage';
+import BookletImages from '../Blocks/BookletImages';
 
 type Props = {
     quiz: Quiz;
@@ -41,7 +38,7 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
                     {pageObj.title}
                     <span className="js-text-content" />
                 </p>
-                <SingleImage images={pageObj.images} />
+                <BookletImages images={pageObj.images} />
                 {pageObj.description && (
                     <div className="mb-4 text-[17px] whitespace-pre-line text-center mainText">
                         {pageObj.description}
