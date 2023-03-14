@@ -60,9 +60,10 @@ const BookletImages: React.FC<Props> = ({images, video_url}) => {
                                     <img
                                         className="w-full rounded-md"
                                         src={image.dataURL}
-                                        alt="Изображение"
+                                        alt=""
                                         loading={index === 0 ? 'eager' : 'lazy'}
                                     />
+                                    <div className="swiper-lazy-preloader" />
                                 </picture>
                                 {index === 0 && video_url ? (
                                     <img
