@@ -44,7 +44,7 @@ const Radiobutton: React.FC<Props> = ({setAnswer, questionObj}) => {
                     <label
                         key={ao.id}
                         className="px-[13px] py-[35px] flex text-base group w-full custom-btn-time cursor-pointer checkbox_label">
-                        <span className="mr-[20px] rounded-[50%] w-[22px] h-[22px] border-[3px] border-[#1A3661] ease-out duration-300 transition custom-btn-select-active-section-2" />
+                        <span className="mr-[20px] rounded-[50%] min-w-[22px] w-[22px] h-[22px] border-[3px] border-[#1A3661] ease-out duration-300 transition custom-btn-select-active-section-2" />
                         <input
                             onClick={() => eval(ao.onclick_action)}
                             type="radio"

@@ -61,7 +61,7 @@ const Checkbox: React.FC<Props> = ({setAnswer, questionObj}) => {
                         key={ao.id}
                         htmlFor={'i' + ao.id}
                         className="px-[13px] py-[35px] flex text-base group w-full custom-btn-select-js-section-2 cursor-pointer checkbox_label">
-                        <span className="mr-[20px] w-[22px] h-[22px] border-[3px] border-[#1A3661] ease-out duration-300 transition custom-btn-select-active-section-2" />
+                        <span className="mr-[20px] min-w-[22px] w-[22px] h-[22px] border-[3px] border-[#1A3661] ease-out duration-300 transition custom-btn-select-active-section-2" />
                         <input
                             onClick={() => eval(ao.onclick_action)}
                             type="checkbox"

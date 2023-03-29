@@ -57,6 +57,7 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  -webkit-text-size-adjust: 100%;
 }
 
 /*
