@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FormPage from '../../FormPage';
 import QuestionPage from '../../QuestionPage';
 import ResultPage from '../../ResultPage';
@@ -20,6 +20,12 @@ type Props = {
 };
 
 const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
+
+    useEffect(() => {
+        window.scrollTo({top: 0, left:0, behavior: 'smooth'});
+    }, [session.actualPage?.obj.id]);
+
+
     const showAction = () => {
         if (quizObj.status !== 'on') return <CoverPage quiz={quizObj} />;
 

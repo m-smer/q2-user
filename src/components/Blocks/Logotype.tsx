@@ -16,4 +16,5 @@ const Logotype: React.FC<Props> = ({images}) => {
     );
 };
 
-export default Logotype;
+Logotype.whyDidYouRender = true;
+export default React.memo(Logotype);
