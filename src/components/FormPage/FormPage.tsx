@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     apiValidationErrorResponse,
     Form,
@@ -35,6 +35,15 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
         shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        function handleResize() {
+            document.getElementById('mainText')?.scrollIntoView();
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     if (!formObj) return null;
     const onSubmit = async (data: Partial<FormData>) => {
@@ -94,7 +103,9 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         {formObj.title}
                     </h3>
                     <BookletImages images={formObj.images} />
-                    <p className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText">
+                    <p
+                        className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText"
+                        id="mainText">
                         {formObj.description}
                     </p>
                 </div>
@@ -130,6 +141,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         {formObj.show_phone_field ? (
                             <>
                                 <InputMask
+                                    inputMode={'tel'}
                                     mask={'+7 (999) 999-99-99'}
                                     // alwaysShowMask={true}
                                     placeholder="Номер телефона"

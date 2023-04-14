@@ -13,6 +13,7 @@ import {
 import PagePage from '../../PagePage';
 import CoverPage from '../../CoverPage';
 import ModalPage from '../../ModalPage';
+import {scrollOnMobileToId} from '../../../utils';
 
 type Props = {
     quizObj: Quiz;
@@ -20,11 +21,11 @@ type Props = {
 };
 
 const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
-
     useEffect(() => {
-        window.scrollTo({top: 0, left:0, behavior: 'smooth'});
+        if (session.actualPage?.obj.id !== quizObj.first_element_id) {
+            scrollOnMobileToId('mainTitle');
+        }
     }, [session.actualPage?.obj.id]);
-
 
     const showAction = () => {
         if (quizObj.status !== 'on') return <CoverPage quiz={quizObj} />;

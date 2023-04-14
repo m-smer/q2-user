@@ -136,3 +136,9 @@ export const isConditionsMet = (
     });
     return met;
 };
+
+export const scrollOnMobileToId = (id: string): void => {
+    if (document.body.clientWidth < 1024) {
+        document.getElementById(id)?.scrollIntoView({behavior: 'smooth'});
+    }
+};
