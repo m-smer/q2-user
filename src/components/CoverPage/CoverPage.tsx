@@ -13,10 +13,14 @@ const CoverPage: React.FC<Props> = ({quiz}) => {
                     <img src={quiz.cover_images[0].dataURL} />
                 </div>
             )}
-            <h1 className="h1 mainTitle">{quiz.cover_title}</h1>
-            <h4 className="h4">{quiz.cover_subtitle}</h4>
+            <h1 className="h1 mainTitle non-breaking-spaces">
+                {quiz.cover_title}
+            </h1>
+            <h4 className="h4 non-breaking-spaces">{quiz.cover_subtitle}</h4>
             <div>
-                <p className="mainText">{quiz.cover_text}</p>
+                <p className="mainText non-breaking-spaces">
+                    {quiz.cover_text}
+                </p>
             </div>
         </div>
     );

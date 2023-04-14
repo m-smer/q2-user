@@ -8,6 +8,23 @@ import {
     UtmValues,
 } from '../redux/types';
 
+export const replaceNonBreakingSpaces = () => {
+    const elements = document.querySelectorAll('.non-breaking-spaces');
+    let replaceCount = 0;
+    Array.from(elements).map(elem => {
+        elem.innerHTML = elem.innerHTML.replace(
+            /(^|\s|>|;)(([а-яА-ЯёЁ]{1,2}\.)|([а-яА-ЯёЁ]{1,3})|([0-9]+)) [а-яА-ЯёЁ0-9<]/g,
+            match => {
+                replaceCount++;
+                return match.replaceAll(' ', (m, offset) =>
+                    offset > 1 ? '&nbsp;' : ' ',
+                );
+            },
+        );
+    });
+    if (replaceCount > 0) replaceNonBreakingSpaces();
+};
+
 export const getFilledUtms = (): UtmValues => {
     const utms = [
         'utm_source',

@@ -38,11 +38,11 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
             <div className="mb-8 overflow-hidden max-w-[350px]">
                 <BookletImages images={pageObj.images} />
             </div>
-            <div className="sm:text-5xl  max-w-[640px] sm:w-full text-center text-[32px] mb-10 text-dark text-[#000000] whitespace-pre-line mainTitle">
+            <div className="sm:text-5xl  max-w-[640px] sm:w-full text-center text-[32px] mb-10 text-dark text-[#000000] whitespace-pre-line mainTitle non-breaking-spaces">
                 {pageObj.title}
             </div>
             {pageObj.description && (
-                <div className="mb-8  text-[18px] whitespace-pre-line text-center  max-w-[640px] mainText">
+                <div className="mb-8  text-[18px] whitespace-pre-line text-center max-w-[640px] mainText non-breaking-spaces">
                     {pageObj.description}
                 </div>
             )}
