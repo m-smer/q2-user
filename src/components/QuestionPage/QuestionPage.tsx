@@ -62,7 +62,7 @@ const QuestionPage: React.FC<Props> = ({quiz, questionObj}) => {
             <div className="grid lg:grid-cols-2 mt-[4px] grid-cols-1">
                 <div>
                     <div
-                        className="text-[22px] pt-2 mb-[20px] lg:mr-[10%] leading-[1.25] whitespace-pre-line mainTitle"
+                        className="text-[22px] pt-2 mb-[20px] lg:mr-[10%] leading-[1.25] whitespace-pre-line mainTitle non-breaking-spaces"
                         id="mainTitle">
                         {questionObj.title}
                     </div>
