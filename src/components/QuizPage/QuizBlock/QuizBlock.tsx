@@ -14,7 +14,6 @@ import PagePage from '../../PagePage';
 import CoverPage from '../../CoverPage';
 import ModalPage from '../../ModalPage';
 import {scrollOnMobileToId} from '../../../utils';
-import {replaceNonBreakingSpaces} from '../../../utils';
 
 type Props = {
     quizObj: Quiz;
@@ -26,7 +25,6 @@ const QuizBlock: React.FC<Props> = ({quizObj, session}) => {
         if (session.actualPage?.obj.id !== quizObj.first_element_id) {
             scrollOnMobileToId('mainTitle');
         }
-        replaceNonBreakingSpaces();
     }, [session.actualPage?.obj.id]);
 
     const showAction = () => {

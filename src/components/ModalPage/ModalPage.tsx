@@ -4,6 +4,7 @@ import {useAppDispatch} from '../../redux/hooks';
 import {savePageData} from '../../redux/slices/sessionSlice';
 import moment from 'moment-timezone';
 import BookletImages from '../Blocks/BookletImages';
+import {replaceNBSP} from '../../utils';
 
 type Props = {
     quiz: Quiz;
@@ -34,14 +35,14 @@ const ModalPage: React.FC<Props> = ({quiz, pageObj}) => {
     return (
         <div className="bg-[#303030] fixed inset-0 flex items-center justify-center custom-modal-window">
             <div className="py-[50px] px-[40px] bg-white rounded-md">
-                <p className="lg:w-[394px] w-full mainTitle non-breaking-spaces">
-                    {pageObj.title}
+                <p className="lg:w-[394px] w-full mainTitle">
+                    {replaceNBSP(pageObj.title)}
                     <span className="js-text-content" />
                 </p>
                 <BookletImages images={pageObj.images} />
                 {pageObj.description && (
-                    <div className="mb-4 text-[17px] whitespace-pre-line text-center mainText non-breaking-spaces">
-                        {pageObj.description}
+                    <div className="mb-4 text-[17px] whitespace-pre-line text-center mainText">
+                        {replaceNBSP(pageObj.description)}
                     </div>
                 )}
                 <button

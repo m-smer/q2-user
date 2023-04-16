@@ -5,6 +5,7 @@ import {savePageData} from '../../redux/slices/sessionSlice';
 import moment from 'moment-timezone';
 import Logotype from '../Blocks/Logotype';
 import BookletImages from '../Blocks/BookletImages';
+import {replaceNBSP} from '../../utils';
 
 type Props = {
     quiz: Quiz;
@@ -38,12 +39,12 @@ const PagePage: React.FC<Props> = ({quiz, pageObj}) => {
             <div className="mb-8 overflow-hidden max-w-[350px]">
                 <BookletImages images={pageObj.images} />
             </div>
-            <div className="sm:text-5xl  max-w-[640px] sm:w-full text-center text-[32px] mb-10 text-dark text-[#000000] whitespace-pre-line mainTitle non-breaking-spaces">
-                {pageObj.title}
+            <div className="sm:text-5xl max-w-[640px] sm:w-full text-center text-[32px] mb-10 text-dark text-[#000000] whitespace-pre-line mainTitle">
+                {replaceNBSP(pageObj.title)}
             </div>
             {pageObj.description && (
-                <div className="mb-8  text-[18px] whitespace-pre-line text-center max-w-[640px] mainText non-breaking-spaces">
-                    {pageObj.description}
+                <div className="mb-8 text-[18px] whitespace-pre-line text-center max-w-[640px] mainText">
+                    {replaceNBSP(pageObj.description)}
                 </div>
             )}
             <button

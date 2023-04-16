@@ -15,6 +15,7 @@ import {saveFormData} from '../../redux/slices/sessionSlice';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
 import BookletImages from '../Blocks/BookletImages';
+import {replaceNBSP} from '../../utils';
 
 type Props = {
     quiz: Quiz;
@@ -99,14 +100,14 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-[4px]">
                 <div className="lg:mb-[20px] lg:mr-[10%]">
-                    <h3 className="text-[22px] mb-[30px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line mainTitle non-breaking-spaces">
-                        {formObj.title}
+                    <h3 className="text-[22px] mb-[30px] text-[#19191A] font-black leading-[1.25] whitespace-pre-line mainTitle">
+                        {replaceNBSP(formObj.title)}
                     </h3>
                     <BookletImages images={formObj.images} />
                     <p
-                        className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText non-breaking-space"
+                        className="text-[16px] text-[#19191A] font-normal leading-[1.5] mt-[30px] whitespace-pre-line mainText"
                         id="mainText">
-                        {formObj.description}
+                        {replaceNBSP(formObj.description)}
                     </p>
                 </div>
                 <div>

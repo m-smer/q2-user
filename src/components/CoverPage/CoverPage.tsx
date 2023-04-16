@@ -1,5 +1,6 @@
 import React from 'react';
 import {Quiz} from '../../redux/types';
+import {replaceNBSP} from '../../utils';
 
 type Props = {
     quiz: Quiz;
@@ -13,15 +14,19 @@ const CoverPage: React.FC<Props> = ({quiz}) => {
                     <img src={quiz.cover_images[0].dataURL} />
                 </div>
             )}
-            <h1 className="h1 mainTitle non-breaking-spaces">
-                {quiz.cover_title}
-            </h1>
-            <h4 className="h4 non-breaking-spaces">{quiz.cover_subtitle}</h4>
-            <div>
-                <p className="mainText non-breaking-spaces">
-                    {quiz.cover_text}
-                </p>
-            </div>
+            {quiz.cover_title && (
+                <h1 className="h1 mainTitle">
+                    {replaceNBSP(quiz.cover_title)}
+                </h1>
+            )}
+            {quiz.cover_subtitle && (
+                <h4 className="h4">{replaceNBSP(quiz.cover_subtitle)}</h4>
+            )}
+            {quiz.cover_subtitle && (
+                <div>
+                    <p className="mainText">{replaceNBSP(quiz.cover_text)}</p>
+                </div>
+            )}
         </div>
     );
 };
