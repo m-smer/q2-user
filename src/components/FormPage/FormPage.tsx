@@ -1,21 +1,21 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     apiValidationErrorResponse,
     Form,
     Quiz,
     FormData,
 } from '../../redux/types';
-import {useForm} from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import {useAppDispatch} from '../../redux/hooks';
 import moment from 'moment-timezone';
 import Logotype from '../Blocks/Logotype';
-import InputMask from 'react-input-mask';
 import ErrorBlock from './ErrorBlock';
 import {saveFormData} from '../../redux/slices/sessionSlice';
 import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
 import BookletImages from '../Blocks/BookletImages';
 import {replaceNBSP} from '../../utils';
+import {PatternFormat} from 'react-number-format';
 
 type Props = {
     quiz: Quiz;
@@ -32,10 +32,12 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
         handleSubmit,
         formState: {errors},
         setError,
+        control,
     } = useForm<FormData>({
         shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
+    const [phoneFocus, setPhoneFocus] = useState(false);
 
     useEffect(() => {
         function handleResize() {
@@ -141,27 +143,60 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
 
                         {formObj.show_phone_field ? (
                             <>
-                                <InputMask
-                                    inputMode={'tel'}
-                                    mask={'+7 (999) 999-99-99'}
-                                    // alwaysShowMask={true}
-                                    placeholder="Номер телефона"
-                                    // onBlur={onBlur}
-                                    {...register('phone', {
-                                        setValueAs: value => {
-                                            return value.replace(/\D/g, '');
+                                <Controller
+                                    control={control}
+                                    name="phone"
+                                    rules={{
+                                        required: {
+                                            value: true,
+                                            message: 'Введите номер телефона',
                                         },
-                                        required: 'Пожалуйста, введите телефон',
                                         minLength: {
                                             value: 11,
-                                            message: 'Неверно введен телефон',
+                                            message:
+                                                'Недостаточно цифр в номере',
                                         },
                                         maxLength: {
                                             value: 11,
-                                            message: 'Неверно введен телефон',
+                                            message: 'Многовато цифр в номере',
                                         },
-                                    })}
-                                    className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
+                                    }}
+                                    render={({field}) => (
+                                        <PatternFormat
+                                            onValueChange={values => {
+                                                const val = values.floatValue;
+                                                const valForSet = val
+                                                    ? '7' + val
+                                                    : '';
+                                                field.onChange(valForSet);
+                                            }}
+                                            onKeyDown={(e: any) => {
+                                                const input = e.target;
+                                                const key = e.key;
+                                                if (
+                                                    field.value?.length ===
+                                                        11 &&
+                                                    key !== 'Backspace' &&
+                                                    key !== 'Delete'
+                                                ) {
+                                                    input.value =
+                                                        input.value.replace(
+                                                            '+7 (8',
+                                                            '+7 (',
+                                                        );
+                                                }
+                                            }}
+                                            name={field.name}
+                                            onFocus={() => setPhoneFocus(true)}
+                                            onBlur={() => setPhoneFocus(false)}
+                                            allowEmptyFormatting={phoneFocus}
+                                            format={'+7 (###) ###-##-##'}
+                                            type={'tel'}
+                                            mask="_"
+                                            placeholder="Номер телефона"
+                                            className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
+                                        />
+                                    )}
                                 />
                                 <ErrorBlock message={errors.phone?.message} />
                             </>
@@ -173,8 +208,7 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                     placeholder="Email"
                                     className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
                                     {...register('email', {
-                                        required:
-                                            'Пожалуйста, введите номер email',
+                                        required: 'Пожалуйста, введите email',
                                         pattern: {
                                             value: /\S+@\S+\.\S+/,
                                             message: 'Неверно введен email',

@@ -16,7 +16,7 @@ const QuizPage: React.FC = () => {
     useEffect(() => {
         const needInitSession =
             quiz && ((pageUpdated && !quiz.tenacious_sessions) || !session?.id);
-
+        //@todo разобраться и переделать
         if (needInitSession) {
             console.log('Инициализирую сессию');
             setPageUpdated(false);
