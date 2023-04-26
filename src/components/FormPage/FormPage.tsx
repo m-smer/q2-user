@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
     apiValidationErrorResponse,
     Form,
@@ -15,7 +15,7 @@ import ProgressBar from '../QuizPage/QuizBlock/ProgressBar';
 import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
 import BookletImages from '../Blocks/BookletImages';
 import {replaceNBSP} from '../../utils';
-import {PatternFormat} from 'react-number-format';
+import PhoneInput from './PhoneInput';
 
 type Props = {
     quiz: Quiz;
@@ -37,7 +37,20 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
         shouldUseNativeValidation: false,
     });
     const dispatch = useAppDispatch();
-    const [phoneFocus, setPhoneFocus] = useState(false);
+
+    const errorFields = Object.keys(errors);
+    useEffect(() => {
+        console.log(errors);
+        // @ts-ignore
+        const firstErrorKey = errorFields.find(key => errors[key]);
+        if (firstErrorKey) {
+            (
+                document.querySelector(
+                    `input[name="${firstErrorKey}"]`,
+                ) as HTMLInputElement | null
+            )?.focus();
+        }
+    }, [errorFields]);
 
     useEffect(() => {
         function handleResize() {
@@ -162,39 +175,10 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                                         },
                                     }}
                                     render={({field}) => (
-                                        <PatternFormat
-                                            onValueChange={values => {
-                                                const val = values.floatValue;
-                                                const valForSet = val
-                                                    ? '7' + val
-                                                    : '';
-                                                field.onChange(valForSet);
-                                            }}
-                                            onKeyDown={(e: any) => {
-                                                const input = e.target;
-                                                const key = e.key;
-                                                if (
-                                                    field.value?.length ===
-                                                        11 &&
-                                                    key !== 'Backspace' &&
-                                                    key !== 'Delete'
-                                                ) {
-                                                    input.value =
-                                                        input.value.replace(
-                                                            '+7 (8',
-                                                            '+7 (',
-                                                        );
-                                                }
-                                            }}
+                                        <PhoneInput
+                                            field_value={field.value}
                                             name={field.name}
-                                            onFocus={() => setPhoneFocus(true)}
-                                            onBlur={() => setPhoneFocus(false)}
-                                            allowEmptyFormatting={phoneFocus}
-                                            format={'+7 (###) ###-##-##'}
-                                            type={'tel'}
-                                            mask="_"
-                                            placeholder="Номер телефона"
-                                            className="mb-[10px] py-[15px] px-[20px] w-full border border-[#C7DDF1] rounded-[5px] text-base outline-0 text_input"
+                                            onChange={field.onChange}
                                         />
                                     )}
                                 />
