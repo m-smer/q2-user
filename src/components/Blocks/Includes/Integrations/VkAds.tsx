@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Quiz} from '../../../../redux/types';
 import {useSession} from '../../../../redux/hooks/useSession';
+import {QUIZ_EVENTS} from '../../../../constants';
 
 type Props = {
     quiz: Quiz;
@@ -9,16 +10,29 @@ type Props = {
 const VkAds: React.FC<Props> = ({quiz}) => {
     const session = useSession();
 
+    const handleLead = (): void => {
+        if (!quiz.vk_ads_id) return;
+        console.log('VK: получено событие: ' + QUIZ_EVENTS.formSent);
+
+        // @ts-ignore
+        var _tmr = window._tmr || (window._tmr = []);
+        _tmr.push({type: 'reachGoal', id: quiz.vk_ads_id, goal: 'Lead'});
+    };
+
     useEffect(() => {
         if (!quiz.vk_ads_id) return;
         includeHeadScript();
-
         console.log('VKAds: include');
+
+        document.addEventListener(QUIZ_EVENTS.formSent, handleLead);
+        return () => {
+            document.removeEventListener(QUIZ_EVENTS.formSent, handleLead);
+        };
     }, [quiz]);
 
     useEffect(() => {
         if (!quiz.vk_ads_id) return;
-
+        //@todo переделать на custom Events
         // @ts-ignore
         var _tmr = window._tmr || (window._tmr = []);
         _tmr.push({

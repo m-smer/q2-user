@@ -1,6 +1,5 @@
 import {useSelector} from 'react-redux';
 import {selectSessions} from '../slices/sessionSlice';
-import {useParams} from 'react-router-dom';
 import {useQuiz} from './useQuiz';
 
 export const useSession = () => {

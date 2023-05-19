@@ -19,3 +19,7 @@ export const RELATION_CONDITION_SIGNS = [
     {id: '>', title: '>'},
     {id: '<', title: '<'},
 ];
+
+export const QUIZ_EVENTS = {
+    formSent: 'formSent',
+};

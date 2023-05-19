@@ -16,6 +16,7 @@ import {useValidateFormDataMutation} from '../../redux/services/passingDataApi';
 import BookletImages from '../Blocks/BookletImages';
 import {replaceNBSP} from '../../utils';
 import PhoneInput from './PhoneInput';
+import {QUIZ_EVENTS} from '../../constants';
 
 type Props = {
     quiz: Quiz;
@@ -40,7 +41,6 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
 
     const errorFields = Object.keys(errors);
     useEffect(() => {
-        console.log(errors);
         // @ts-ignore
         const firstErrorKey = errorFields.find(key => errors[key]);
         if (firstErrorKey) {
@@ -94,7 +94,11 @@ const FormPage: React.FC<Props> = ({quiz, formObj}) => {
                         },
                     }),
                 );
-                eval(formObj.onsubmit_action);
+
+                document.dispatchEvent(new CustomEvent(QUIZ_EVENTS.formSent));
+
+                // раскомментировать для включения onsubmit_action
+                // eval(formObj.onsubmit_action);
             })
             .catch((response: apiValidationErrorResponse<FormData>) => {
                 console.log(response);
