@@ -16,7 +16,7 @@ const VkAds: React.FC<Props> = ({quiz}) => {
 
         // @ts-ignore
         var _tmr = window._tmr || (window._tmr = []);
-        _tmr.push({type: 'reachGoal', id: quiz.vk_ads_id, goal: 'Lead'});
+        _tmr.push({type: 'reachGoal', id: quiz.vk_ads_id, goal: 'lead'});
     };
 
     useEffect(() => {
