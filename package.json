@@ -43,6 +43,7 @@
     "build": "craco build",
     "build:stage": "env-cmd -f .env.stage craco build",
     "test": "craco test",
+    "test:cy": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -74,6 +75,7 @@
     "autoprefixer": "^10.4.12",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "cypress": "^12.16.0",
     "env-cmd": "^10.1.0",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.5.0",

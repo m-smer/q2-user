@@ -1,0 +1,238 @@
+{
+  "id": "JdePNizxkL",
+  "status": "on",
+  "url_id": "wt",
+  "title": "Will Towers",
+  "first_element_id": "T4q50YBpA4",
+  "shuffle_questions": false,
+  "tenacious_sessions": false,
+  "questions": [
+    {
+      "id": "Z-T4e8_lRb",
+      "title": "Какая квартира вас интересует???",
+      "answerOptions": [
+        {
+          "id": "I6vegpCE7D",
+          "title": "Студии",
+          "order": 0,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        },
+        {
+          "id": "DQ2_QjLx-_",
+          "title": "1-комнатные",
+          "order": 1,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        },
+        {
+          "id": "xAMSBxPu6C",
+          "title": "2-комнатные",
+          "order": 2,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        },
+        {
+          "id": "t6Sk0S6bNI",
+          "title": "3-комнатные",
+          "order": 3,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        },
+        {
+          "id": "CXIL4ZQhTx",
+          "title": "4-комнатные",
+          "order": 4,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        }
+      ],
+      "images": [
+        {
+          "id": "jmjXVupyJD",
+          "dataURL": "http://q2-api/uploads/images/jmjXVupyJD.png",
+          "type": null,
+          "hasWebpCopy": false
+        }
+      ],
+      "type": "radiobutton",
+      "correct_answer_points": 0,
+      "time_limit": "00:00:00",
+      "subtitle": "",
+      "description": "<p>​<span style=\"color: rgb(0, 0, 0)\">Квартиры представлены без отделки. Разнообразные форматы квартир&nbsp;</span><span style=\"color: rgb(0, 0, 0)\">с площадью от 23 м² до 110 м²:​​​</span></p><p><br><span style=\"color: rgb(0, 0, 0)\">• Эргономичные планировки квартир</span><br><span style=\"color: rgb(0, 0, 0)\">• Высота потолков: 2,8 м (от уровня чистого пола до потолка перекрытия)</span><br><br><span style=\"color: rgb(0, 0, 0)\">Проект c выходом в живописный Головинский парк с каскадом прудов и близостью с усадьбой&nbsp;«Михалково» – привилегия, доступная немногим.</span></p>",
+      "video_url": ""
+    },
+    {
+      "id": "T4q50YBpA4",
+      "title": "Превед! Предлагаем рассмотреть жилой комплекс бизнес-класса Will Towers в Раменках",
+      "answerOptions": [
+        {
+          "id": "WzNTGX0Qim",
+          "title": "Хочу очень посмотреть варианты квартир",
+          "order": 0,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        },
+        {
+          "id": "Y0jFARrRMk",
+          "title": "Хочу получить консультацию по телефону",
+          "order": 1,
+          "points": 0,
+          "is_right": false,
+          "onclick_action": ""
+        }
+      ],
+      "images": [
+        {
+          "id": "ozq_0c6mDB",
+          "dataURL": "http://q2-api/uploads/images/ozq_0c6mDB.jpeg",
+          "type": null,
+          "hasWebpCopy": true
+        },
+        {
+          "id": "1Oj3cFh3-p",
+          "dataURL": "http://q2-api/uploads/images/1Oj3cFh3-p.jpeg",
+          "type": null,
+          "hasWebpCopy": true
+        }
+      ],
+      "type": "radiobutton",
+      "correct_answer_points": 0,
+      "time_limit": "00:00:00",
+      "subtitle": "",
+      "description": "<p>​<span style=\"color: rgb(0, 0, 0)\">Привилегия жить вблизи парка с прудами и усадьбой</span></p><p><br><span style=\"color: rgb(0, 0, 0)\">• Москва, САО, ул. Михалковская, вл. 48</span><br><span style=\"color: rgb(0, 0, 0)\">• Квартиры с видами на водную гладь&nbsp;</span><span style=\"color: rgb(0, 0, 0)\">и зеленые массивы</span></p><p><span style=\"color: rgb(0, 0, 0)\">• Благоустроенная дворовая территория&nbsp;</span><span style=\"color: rgb(0, 0, 0)\">с ландшафтным дизайном, плавно переходящая в парк</span></p><p><span style=\"color: rgb(0, 0, 0)\">• Вся необходимая торговая и социальная инфраструктура в пешей доступности</span><br><span style=\"color: rgb(0, 0, 0)\">• 5 минут пешком до МЦК «Коптево»</span><br><span style=\"color: rgb(0, 0, 0)\">• Подземный паркинг</span><br><br><span style=\"color: rgb(0, 0, 0)\">Срок сдачи 1 корпус: 2 квартал 2023г.<br>Срок сдачи 3 корпус: 3 квартал 2024г.</span><br><br><span style=\"font-size: 8px\">Реклама. Рекламодатель ООО «РГ - Девелопмент». ИНН 7729760588.&nbsp;</span><span style=\"font-size: 8px\">Застройщик ООО СЗ СМТ. Проектная декларация на нашдом.рф</span></p>",
+      "video_url": ""
+    }
+  ],
+  "results": [
+    {
+      "id": "9ko9Mc252K",
+      "title": "Результат",
+      "description": "",
+      "subtitle": "КОнец",
+      "redirect_url": "https://willtowers.ru/params/?utm_source={utm_source}&utm_medium={utm_medium}&utm_campaign={utm_campaign}",
+      "type": "image_description",
+      "images": [
+        {
+          "id": "8gtmhK4Sic",
+          "dataURL": "http://q2-api/uploads/images/8gtmhK4Sic.jpeg",
+          "type": null,
+          "hasWebpCopy": true
+        },
+        {
+          "id": "sDnFB58z_L",
+          "dataURL": "http://q2-api/uploads/images/sDnFB58z_L.jpeg",
+          "type": null,
+          "hasWebpCopy": true
+        }
+      ]
+    },
+    {
+      "id": "FiL5FoZB8P",
+      "title": "Preved!",
+      "description": "",
+      "subtitle": "",
+      "redirect_url": "http://ya.ru",
+      "type": "redirect",
+      "images": []
+    }
+  ],
+  "forms": [
+    {
+      "id": "rde3siJq-l",
+      "title": "Далее вы увидите планировки \nи цены квартир, которые мы подобрали для вас!",
+      "description": "Закажите обратный звонок консультанта, запишитесь на онлайн консультацию и узнайте про самые выгодные предложения!\n",
+      "show_name_field": false,
+      "images": [],
+      "show_surname_field": false,
+      "show_phone_field": true,
+      "show_email_field": false,
+      "onsubmit_action": ""
+    }
+  ],
+  "connections": [
+    {
+      "id": "1-FEN2q1EE",
+      "source_obj_id": "T4q50YBpA4",
+      "target_obj_id": "Z-T4e8_lRb",
+      "connectionConditions": []
+    },
+    {
+      "id": "4HrBVdQmG7",
+      "source_obj_id": "Z-T4e8_lRb",
+      "target_obj_id": "rde3siJq-l",
+      "connectionConditions": []
+    },
+    {
+      "id": "5dhEzb3L3B",
+      "source_obj_id": "rde3siJq-l",
+      "target_obj_id": "9ko9Mc252K",
+      "connectionConditions": [
+        {
+          "id": "hYA7m6l-OR",
+          "connection_id": "5dhEzb3L3B",
+          "type": "answer_option",
+          "answer_option_id": "WzNTGX0Qim",
+          "question_id": "T4q50YBpA4",
+          "sign": "=",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "V2rBwrZC4u",
+      "source_obj_id": "T4q50YBpA4",
+      "target_obj_id": "rde3siJq-l",
+      "connectionConditions": [
+        {
+          "id": "Ye610mqZ5R",
+          "connection_id": "V2rBwrZC4u",
+          "type": "answer_option",
+          "answer_option_id": "Y0jFARrRMk",
+          "question_id": "T4q50YBpA4",
+          "sign": "=",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "H6agsI4mrg",
+      "source_obj_id": "rde3siJq-l",
+      "target_obj_id": "FiL5FoZB8P",
+      "connectionConditions": []
+    }
+  ],
+  "pages": [],
+  "question_time_limit": "00:00:00",
+  "quiz_time_limit": "00:00:00",
+  "cover_title": "Квиз временно не работает",
+  "cover_subtitle": "Пожалуйста, зайдите позже",
+  "cover_text": "Администратор выключил квиз.",
+  "logotypes": [
+    {
+      "id": "HjAx_8Uxb7",
+      "dataURL": "http://q2-api/uploads/images/HjAx_8Uxb7.jpeg",
+      "type": "logotype",
+      "hasWebpCopy": true
+    }
+  ],
+  "favicons": [],
+  "cover_images": [],
+  "lead2call_link": null,
+  "calltouch_site_id": null,
+  "calltouch_mod_id": null,
+  "scb_links": [],
+  "ym_id": null,
+  "tm_id": null,
+  "vk_id": null,
+  "vk_ads_id": null,
+  "gtm_id": null,
+  "ga_id": null,
+  "jivosite_id": null
+}
